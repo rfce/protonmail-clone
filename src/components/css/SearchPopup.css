@@ -1,0 +1,139 @@
+._7gxs {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    background-color: transparent;
+}
+
+._7gxs .container {
+    position: absolute;
+    top: 10px;
+    left: 240px;
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+._7gxs .input-container {
+    position: relative;
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+    border-radius: 8px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    overflow: hidden;
+    border-bottom: 1px solid rgb(208, 208, 208);
+}
+
+._7gxs .input-container span {
+    position: absolute;
+    top: 12px;
+    right: 20px;
+    font-size: 15px;
+    color: rgb(32, 32, 39);
+    padding: 5px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+._7gxs .input-container span:hover {
+    background-color: rgba(194, 193, 192, 0.2);
+}
+
+._7gxs input {
+    color: grey;
+    width: calc(100% - 8px);
+    border: none;
+    height: 48px;
+    padding-left: 20px;
+    outline: none;
+    font-size: 14px;
+}
+
+._7gxs input:focus {
+    color: rgb(47, 47, 47);
+}
+
+._7gxs input::placeholder {
+    font-size: 14px;
+}
+
+._7gxs .filter-container {
+    margin: 12px 20px 12px 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgb(200, 200, 200);
+}
+
+._7gxs .filter-container > div {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+._7gxs .filter-container > span {
+    font-weight: 600;
+    font-size: 14px;
+    color: rgb(55, 55, 55);
+}
+
+._7gxs .container .filter-container > div {
+    padding-top: 10px;
+}
+
+._7gxs .container .filter-container > div button {
+    height: 28px;
+    font-size: 14px;
+    width: fit-content;
+    padding: 3px 14px;
+    color: rgb(43, 43, 43);
+    background-color: rgb(222, 219, 217);
+    border: none
+}
+
+._7gxs .container .filter-container > div button svg {
+    fill: rgb(43, 43, 43);
+    width: 18px;
+    height: 18px;
+}
+
+._7gxs .container .filter-container > div button.active {
+    color: white;
+    background-color: rgb(98, 67, 230);
+}
+
+._7gxs .container .button-container {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 20px;
+}
+
+._7gxs .container .button-container span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(43, 43, 43);
+    border: 1px solid rgb(208, 208, 208);
+    border-radius: 8px;
+    height: 36px;
+    padding: 2px 12px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+._7gxs .container .button-container {
+    margin-bottom: 25px;
+}
+
+._7gxs .container .button-container button {
+    margin-right: 20px;
+    width: fit-content;
+    padding: 0px 18px;
+    color: white;
+    background-color: rgb(98, 67, 230);
+}

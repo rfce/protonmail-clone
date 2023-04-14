@@ -1,0 +1,26 @@
+._8cwq {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+}
+
+._8cwq .container {
+    position: absolute;
+    top: 56px;
+    left: 200px;
+    background-color: white;
+    padding: 8px 15px;
+    border-radius: 8px;
+    border: 1px solid rgb(210, 210, 210);
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+._8cwq .container > div {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    gap: 5px;
+    padding: 4px 0px;
+}

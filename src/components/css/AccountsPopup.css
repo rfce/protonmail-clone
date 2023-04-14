@@ -1,0 +1,98 @@
+._0gvl {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+}
+
+._0gvl .container {
+    position: absolute;
+    top: 54px;
+    right: 10px;
+    width: 232px;
+    color: rgb(42, 42, 42);
+    background-color: white;
+    border-radius: 8px;
+    border: 1px solid rgb(210, 210, 210);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+._0gvl .container > div:first-of-type {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 10px 0px 15px 20px;
+    border-bottom: 1px solid rgb(210, 210, 210);
+}
+
+._0gvl .container > div:first-of-type span {
+    font-size: 14px;
+    color: rgb(129, 129, 129);
+}
+
+._0gvl .container > div:first-of-type span:first-of-type {
+    font-size: 14px;
+    font-weight: 600;
+    color: rgb(42, 42, 42);
+}
+
+._0gvl .container .recovery-dot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 25px;
+    font-size: 15px;
+    padding: 10px 0px 10px 20px;
+    border-bottom: 1px solid rgb(210, 210, 210);
+}
+
+._0gvl .container .about {
+    padding-top: 10px;
+    padding-bottom: 10px
+}
+
+._0gvl .container .about > div {
+    padding: 7px 10px 7px 20px;
+    font-size: 15px;
+}
+
+._0gvl .container .about .box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+._0gvl .container .about .box > img {
+    border-radius: 5px;
+}
+
+._0gvl .container .about > div:last-of-type {
+    padding-top: 0px;
+    border-bottom: 1px solid rgb(210, 210, 210);
+}
+
+._0gvl .container .account-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding-top: 5px;
+    padding-bottom: 15px;
+}
+
+._0gvl .container .account-box button {
+    width: 180px;
+    height: 36px;
+    color: white;
+    background-color: rgb(98, 67, 230);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+._0gvl .container .account-box button:first-of-type {
+    color: rgb(51, 51, 51);
+    background-color: white;
+    border: 1px solid rgb(196, 196, 196);
+}

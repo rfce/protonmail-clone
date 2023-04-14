@@ -1,0 +1,209 @@
+._4esa .navbar {
+    height: 68px;
+    background-color: rgb(28, 20, 68);
+    display: flex;
+    align-items: center;
+}
+
+._4esa .navbar .logo-caret {
+    display: flex;
+    align-items: center;
+    gap: 42px;
+}
+
+._4esa .navbar .logo-caret svg {
+    color: rgb(206, 206, 206);
+    width: 30px;
+    height: 30px;
+    padding: 4px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+._4esa .navbar .logo-caret svg:hover,
+._4esa .navbar .logo-caret svg.highlighted {
+    background-color: rgba(205, 234, 255, 0.12);
+}
+
+._4esa .navbar .upgrade-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding-left: 10px;
+}
+
+._4esa .navbar .upgrade-container button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    margin-right: 4px;
+    color: white;
+    font-size: 14px;
+    color: white;
+    border: 1px solid rgb(138, 110, 255);
+    background-color: transparent;
+    width: 112px;
+    height: 36px;
+    border-radius: 8px;
+}
+
+._4esa .navbar .upgrade-container button svg {
+    fill: white;
+    width: 20px;
+    height: 20px;
+    transform: translate(0px, 2px);
+}
+
+._4esa .navbar .upgrade-container .search-box > svg {
+    fill: rgb(226, 226, 226);
+    width: 17px;
+    height: 17px;
+}
+
+._4esa .navbar .upgrade-container .search-box span {
+    color: rgba(171, 178, 196, 0.64);
+    padding-left: 8px;
+    font-size: 15px;
+}
+
+._4esa .navbar .upgrade-container .search-box {
+    color: white;
+    border: 1px solid rgb(146, 130, 212);
+    width: 478px;
+    background-color: transparent;
+    border-radius: 8px;
+    height: 36px;
+    box-sizing: border-box;
+    outline: none;
+    padding-left: 10px;
+    cursor: text;
+}
+
+._4esa .navbar .upgrade-container > div {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+._4esa .navbar .accounts {
+    display: flex;
+    align-items: center;
+    text-align: right;
+    padding-left: 20px;
+    padding-right: 10px;
+    cursor: pointer;
+}
+
+._4esa .navbar .accounts div:first-of-type {
+    color: rgb(210, 210, 210);
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    padding-right: 10px;
+}
+
+._4esa .navbar .accounts div:first-of-type span:last-of-type {
+    color: rgb(146, 130, 212);
+    font-size: 12px;
+}
+
+._4esa .navbar .accounts .accounts-icon {
+    color: rgb(212, 212, 212);
+    border: 1px solid rgba(179, 170, 216, 0.719);
+    border-radius: 8px;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+._4esa .navbar .accounts .accounts-icon.highlighted {
+    background-color: rgba(74, 57, 143, 0.5);
+}
+
+._4esa .container .crash-doe {
+    background-color: rgb(28, 20, 68);
+    height: calc(100vh - 68px);
+    width: 250px;
+    text-align: center;
+}
+
+._4esa .container .crash-doe > div {
+    display: flex;
+    align-items: center;
+    color: white;
+    font-size: 15px;
+    width: 236px;
+    height: 36px;
+    margin: 0px auto;
+    padding-left: 10px;
+    padding-right: 5px;
+    box-sizing: border-box;
+}
+
+._4esa .container .crash-doe > div:first-of-type {
+    margin-top: 10px;
+}
+
+._4esa .container .crash-doe > div.active {
+    background-color: rgba(74, 54, 143, 0.3);
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+._4esa .container .crash-doe > button {
+    width: 236px;
+    height: 44px;
+    background-color: rgb(124, 92, 255);
+    border-radius: 8px;
+    border: none;
+    font-size: 16px;
+    color: white;
+}
+
+._4esa .container .crash-doe .iambic-het {
+    margin-left: auto;
+}
+
+._4esa .container .crash-doe .slurry-crib {
+    all: unset;
+    margin-top: 5px;
+}
+
+._4esa .container .crash-doe .slurry-crib > div {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: rgb(179, 163, 245);
+    border-bottom: 1px solid rgb(65, 48, 133);
+    height: 42px;
+    padding-left: 20px;
+}
+
+._4esa .container .crash-doe .slurry-crib > div svg {
+    width: 13px;
+    height: auto;
+}
+
+._4esa .container .crash-doe .slurry-crib > div .lacteal-bay {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-left: auto;
+    padding-right: 12px;
+}
+
+._4esa .container .crash-doe .slurry-crib > div .lacteal-bay svg {
+    width: 18px;
+    height: auto;
+    fill: white;
+}
+
+._4esa .container .inbox-container {
+    background-color: green;
+}

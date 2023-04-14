@@ -1,0 +1,70 @@
+._0afl {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+}
+
+._0afl .container {
+    position: absolute;
+    top: 56px;
+    right: 180px;
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    min-height: 100px;
+    background-color: white;
+    border-radius: 8px;
+    color: rgb(56, 56, 56);
+    border: 1px solid rgb(211, 211, 211);
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+._0afl .container .settings {
+    border-bottom: 1px solid rgb(192, 192, 192);
+}
+
+._0afl .container > span {
+    text-align: left;
+    width: 100%;
+    font-size: 15px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+    box-sizing: border-box;
+    border-bottom: 1px solid rgb(211, 211, 211);
+}
+
+._0afl .container .settings-box {
+    width: 100%;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgb(211, 211, 211);
+}
+
+._0afl .container .settings-box > div {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 15px;
+    height: 35px;
+    padding-left: 15px;
+    padding-right: 15px;
+    box-sizing: border-box;
+}
+
+._0afl .container .settings-box > span {
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+    font-size: 15px;
+    height: 34px;
+}
+
+._0afl .container .settings-box > div span {
+    color: rgb(109, 74, 255);
+}
+
