@@ -172,22 +172,85 @@
 ._4esa .container .crash-doe .slurry-crib {
     all: unset;
     margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 ._4esa .container .crash-doe .slurry-crib > div {
+    width: 250px;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 8px;
     font-size: 13px;
     color: rgb(179, 163, 245);
     border-bottom: 1px solid rgb(65, 48, 133);
     height: 42px;
-    padding-left: 20px;
+    box-sizing: border-box;
+}
+
+._4esa .container .crash-doe .slurry-crib .goaded-nus {
+    width: 236px;
+    height: 36px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-align: left;
+    padding-left: 16px;
+    margin-bottom: 2px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+._4esa .container .crash-doe .slurry-crib .goaded-nus:hover {
+    color: white;
+    background-color: rgba(74, 54, 143, 0.3);
+}
+
+._4esa .container .crash-doe .slurry-crib .sieve-care {
+    width: 250px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+._4esa .container .crash-doe .slurry-crib .sieve-care > div:first-of-type {
+    width: 168px;
+    height: 36px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-align: start;
+    padding-left: 18px;
+    border-radius: 8px;
+    margin: 0px auto;
+    cursor: pointer;
+}
+
+._4esa .container .crash-doe .slurry-crib .sieve-care > div:first-of-type:hover {
+    color: white;
+    background-color: rgba(74, 54, 143, 0.3);
+}
+
+._4esa .container .crash-doe .slurry-crib > div:hover svg {
+    fill: white;
 }
 
 ._4esa .container .crash-doe .slurry-crib > div svg {
     width: 13px;
     height: auto;
+}
+
+._4esa .container .crash-doe .slurry-crib .active {
+    border-bottom-color: transparent;
+}
+
+._4esa .container .crash-doe .slurry-crib .active svg {
+    rotate: 90deg;
 }
 
 ._4esa .container .crash-doe .slurry-crib > div .lacteal-bay {
@@ -202,6 +265,44 @@
     width: 18px;
     height: auto;
     fill: white;
+}
+
+._4esa .container .crash-doe .slurry-crib .taskers-ten {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: fit-content;
+    padding-bottom: 10px;
+    margin-top: -5px;
+}
+
+._4esa .container .crash-doe .slurry-crib .taskers-ten > div {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 36px;
+    padding-left: 15px;
+    color: white;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+._4esa .container .crash-doe .slurry-crib .snaky-ooze {
+    all: unset;
+    display: flex;
+    align-items: center;
+    text-align: left;
+    width: 100%;
+    height: 36px;
+    font-size: 12px;
+    padding-left: 25px;
+    color: rgb(179, 163, 245);
+    border-bottom: 1px solid rgb(65, 48, 133);
+    box-sizing: border-box;
+}
+
+._4esa .container .crash-doe .slurry-crib .snaky-ooze.no-border {
+    border-color: transparent;
 }
 
 ._4esa .container .inbox-container {

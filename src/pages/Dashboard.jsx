@@ -5,6 +5,10 @@ import { BiSearch } from "react-icons/bi"
 import { BsChevronRight, BsPlusLg } from "react-icons/bs"
 import SettingsIcon from "../assets/Settings.png"
 import RefreshIcon from "../assets/Refresh.png"
+import ArchiveIcon from "../assets/Archive.png"
+import SpamIcon from "../assets/Spam.png"
+import TrashIcon from "../assets/Trash.png"
+import MailIcon from "../assets/Mail.png"
 import {UpgradeIcon} from "../assets/Icons"
 import { useState } from "react"
 import SearchPopup from "../components/SearchPopup"
@@ -15,7 +19,8 @@ import GridPopup from "../components/GridPopup"
 const Dashboard = () => {
     const [popup, setPopup] = useState(false)
     const [activeSidebar, setActiveSidebar] = useState(0)
-    
+    const [accordian, setAccordian] = useState([])
+
     const username = "theresa"
     const sidebar = ["Inbox", "Drafts", "Sent", "Starred"]
 
@@ -36,6 +41,10 @@ const Dashboard = () => {
         }
         
         return undefined
+    }
+
+    const expand = (box) => {
+        setAccordian(prev => prev.includes(box) ? prev.filter(item => item !== box) : [...prev, box])
     }
 
     return (
@@ -93,26 +102,64 @@ const Dashboard = () => {
                         </div>
                     ))}
                     <div className="slurry-crib">
-                        <div>
-                            <BsChevronRight />
-                            MORE
+                        <div className={accordian.includes("more") ? "active" : undefined} >
+                            <div 
+                                className={accordian.includes("more") ? "goaded-nus active" : "goaded-nus"} 
+                                onClick={() => expand("more")}
+                            >
+                                <BsChevronRight />
+                                {accordian.includes("more") ? "LESS" : "MORE"}
+                            </div>
                         </div>
-                        <div>
-                            <BsChevronRight />
-                            FOLDERS
+                        {accordian.includes("more") ? (
+                            <div className="taskers-ten">
+                                <div>
+                                    <img src={ArchiveIcon} alt="" />
+                                    Archive
+                                </div>
+                                <div>
+                                    <img src={SpamIcon} alt="" />
+                                    Spam
+                                </div>
+                                <div>
+                                    <img src={TrashIcon} alt="" />
+                                    Trash
+                                </div>
+                                <div>
+                                    <img src={MailIcon} alt="" />
+                                    All mail
+                                </div>
+                            </div>
+                        ) : undefined}
+                        <div
+                            className={accordian.includes("folders") ? "sieve-care active" : "sieve-care"} 
+                            onClick={() => expand("folders")}
+                        >
+                            <div>
+                                <BsChevronRight />
+                                FOLDERS
+                            </div>
                             <div className="lacteal-bay">
                                 <BsPlusLg />
                                 <img src={SettingsIcon} alt="" />
                             </div>
                         </div>
-                        <div>
-                            <BsChevronRight />
-                            LABELS
+                        {accordian.includes("folders") ? <div className="snaky-ooze">No folders</div> : undefined}
+                        <div
+                            className={accordian.includes("labels") ? "sieve-care active" : "sieve-care"} 
+                            style={{ borderBottomColor: "transparent" }}
+                            onClick={() => expand("labels")}
+                        >
+                            <div>
+                                <BsChevronRight />
+                                LABELS
+                            </div>
                             <div className="lacteal-bay">
                                 <BsPlusLg />
                                 <img src={SettingsIcon} alt="" />
                             </div>
                         </div>
+                        {accordian.includes("labels") ? <div className="snaky-ooze no-border">No labels</div> : undefined}
                     </div>
                 </div>
                 <div className="inbox-container">
