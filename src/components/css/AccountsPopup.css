@@ -11,6 +11,8 @@
     top: 54px;
     right: 10px;
     width: 232px;
+    display: flex;
+    flex-direction: column;
     color: rgb(42, 42, 42);
     background-color: white;
     border-radius: 8px;

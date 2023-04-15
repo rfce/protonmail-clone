@@ -2,13 +2,24 @@ import "./css/Dashboard.css"
 import Logo from "../assets/Logo.png"
 import { TbGridDots } from "react-icons/tb"
 import { BiSearch } from "react-icons/bi"
-import { BsChevronRight, BsPlusLg } from "react-icons/bs"
+import { BsChevronRight, BsPlusLg, BsCheck2 } from "react-icons/bs"
+import { IoMdArrowDropdown } from "react-icons/io"
+import ArrowIcon from "../assets/Arrow.png"
 import SettingsIcon from "../assets/Settings.png"
 import RefreshIcon from "../assets/Refresh.png"
 import ArchiveIcon from "../assets/Archive.png"
 import SpamIcon from "../assets/Spam.png"
 import TrashIcon from "../assets/Trash.png"
 import MailIcon from "../assets/Mail.png"
+import ContactsIcon from "../assets/Contacts.png"
+import CalendarIcon from "../assets/Calendar.png"
+import ConversationsIcon from "../assets/ConversationsIcon.png"
+import MessageIcon from "../assets/Header/Inbox.png"
+import FireIcon from "../assets/Header/Spam.png"
+import DeleteIcon from "../assets/Header/Trash.png"
+import BucketIcon from "../assets/Header/Bucket.png"
+import FolderIcon from "../assets/Header/Folder.png"
+import LabelIcon from "../assets/Header/Label.png"
 import {UpgradeIcon} from "../assets/Icons"
 import { useState } from "react"
 import SearchPopup from "../components/SearchPopup"
@@ -20,9 +31,13 @@ const Dashboard = () => {
     const [popup, setPopup] = useState(false)
     const [activeSidebar, setActiveSidebar] = useState(0)
     const [accordian, setAccordian] = useState([])
+    const [hovered, setHovered] = useState(false)
+    const [checkbox, setCheckbox] = useState(false)
+    const [activeRead, setActiveRead] = useState(0)
 
     const username = "theresa"
     const sidebar = ["Inbox", "Drafts", "Sent", "Starred"]
+    const messageSelector = ["All", "Read", "Unread"]
 
     const Popup = () => {
         if (popup) {
@@ -45,6 +60,18 @@ const Dashboard = () => {
 
     const expand = (box) => {
         setAccordian(prev => prev.includes(box) ? prev.filter(item => item !== box) : [...prev, box])
+    }
+
+    const imageLocation = (imageName, index) => {
+        if (activeSidebar === index) {
+            return require("../assets/" + imageName + "Active.png")
+        }
+
+        if (hovered === imageName.toLowerCase()) {
+            return require("../assets/Hover/" + imageName + ".png")
+        }
+
+        return require("../assets/" + imageName + ".png")
     }
 
     return (
@@ -93,10 +120,12 @@ const Dashboard = () => {
                     <button>New message</button>
                     {sidebar.map((item, index) => (
                         <div key={index} 
-                            className={activeSidebar === index ? "active" : undefined}
+                            className={activeSidebar === index ? "recode-hang active" : "recode-hang"}
                             onClick={() => setActiveSidebar(index)}
+                            onMouseEnter={() => setHovered(item.toLowerCase())}
+                            onMouseLeave={() => setHovered(false)}
                         >
-                            <img src={require(`../assets/${activeSidebar === index ? item + "Active" : item}.png`)} alt="" />
+                            <img src={imageLocation(item, index)} alt="" />
                             {item}
                             {activeSidebar === index ? <img className="iambic-het" src={RefreshIcon} alt="" /> : undefined}
                         </div>
@@ -161,12 +190,81 @@ const Dashboard = () => {
                         </div>
                         {accordian.includes("labels") ? <div className="snaky-ooze no-border">No labels</div> : undefined}
                     </div>
+                    <div className="meter-container">
+                        <div className="meter">
+                            <div className="range"></div>
+                        </div>
+                        <div className="tubers-eat">
+                            <div>
+                                <strong>9.19 MB</strong> / 500.00 MB
+                            </div>
+                            <span>5.0.20.10</span>
+                        </div>
+                    </div>
                 </div>
                 <div className="inbox-container">
+                    <div className="sacrum-pass">
+                        <div className="header">
+                            <div className={checkbox ? "checkbox active" : "checkbox"}
+                                onClick={() => setCheckbox(prev => !prev)}
+                            >
+                                {checkbox ? <BsCheck2 /> : undefined}
+                            </div>
+                            <IoMdArrowDropdown />
+                            {checkbox ? (
+                                <div className="highs-kit">
+                                    <div>
+                                        <img src={MessageIcon} alt="" />
+                                    </div>
+                                    <div>
+                                        <img src={DeleteIcon} alt="" />
+                                        <img src={BucketIcon} alt="" />
+                                        <img src={FireIcon} alt="" />
+                                    </div>
+                                    <div>
+                                        <img src={FolderIcon} alt="" />
+                                        <img src={LabelIcon} alt="" />
+                                    </div>
+                                </div>
+                            ) : undefined}
+                        </div>
+                        <div className="container">
+                            <div>
+                                <div className="pryers-seas">
+                                    <div>
+                                        {messageSelector.map((item, index) => {
+                                            return <button 
+                                                    key={index}
+                                                    onClick={() => setActiveRead(index)} 
+                                                    className={activeRead === index ? "active" : undefined}
+                                            >{item}
+                                            </button>
+                                        })}
+                                    </div>
+                                    <div>
+                                        <button>
+                                            Newest first
+                                            <img src={ArrowIcon} alt="" />
+                                        </button>
+                                    </div>
+                                </div>
+                                <div className="message-container">
 
+                                </div>
+                            </div>
+                            <div className="canned-copy">
+                                <div>
+                                    <h1>Welcome {username[0].toUpperCase()}{username.slice(1,)}</h1>
+                                    <span>You have <strong>2 unread conversations</strong> in your inbox.</span>
+                                    <img src={ConversationsIcon} alt="" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div className="sidebar">
-
+                    <img src={ContactsIcon} alt="" />
+                    <img src={CalendarIcon} alt="" />
                 </div>
             </div>
         </div>

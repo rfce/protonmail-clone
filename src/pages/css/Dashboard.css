@@ -65,7 +65,7 @@
 
 ._4esa .navbar .upgrade-container .search-box span {
     color: rgba(171, 178, 196, 0.64);
-    padding-left: 8px;
+    padding-left: 2px;
     font-size: 15px;
 }
 
@@ -125,11 +125,18 @@
     background-color: rgba(74, 57, 143, 0.5);
 }
 
+._4esa .container {
+    display: flex;
+    flex-direction: row;
+}
+
 ._4esa .container .crash-doe {
+    position: relative;
     background-color: rgb(28, 20, 68);
     height: calc(100vh - 68px);
     width: 250px;
     text-align: center;
+    z-index: 1;
 }
 
 ._4esa .container .crash-doe > div {
@@ -163,6 +170,17 @@
     border: none;
     font-size: 16px;
     color: white;
+}
+
+._4esa .container .crash-doe .recode-hang {
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+._4esa .container .crash-doe .recode-hang:hover {
+    cursor: pointer;
+    border-radius: 8px;
+    background-color: rgba(74, 54, 143, 0.185);
 }
 
 ._4esa .container .crash-doe .iambic-het {
@@ -305,6 +323,196 @@
     border-color: transparent;
 }
 
+._4esa .container .crash-doe .meter-container {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 11px;
+    color: rgb(179, 163, 245);
+}
+
+._4esa .container .crash-doe .meter-container .meter {
+    position: relative;
+    width: 224px;
+    height: 4px;
+    background-color: rgb(60, 43, 128);
+    border-radius: 10px;
+}
+
+._4esa .container .crash-doe .meter-container .range {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: calc(224px * 10/500);
+    height: 4px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+._4esa .container .crash-doe .meter-container .tubers-eat {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
 ._4esa .container .inbox-container {
-    background-color: green;
+    background-color: rgb(28, 20, 68);
+    width: 100%;
+}
+
+._4esa .container .inbox-container .sacrum-pass {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+._4esa .container .inbox-container .sacrum-pass .header {
+    height: 48px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    grid-gap: 15px;
+    padding-left: 30px;
+    border-bottom: 1px solid rgb(209, 209, 209);
+}
+
+._4esa .inbox-container .sacrum-pass .header .checkbox {
+    width: 19px;
+    height: 19px;
+    border-radius: 5px;
+    border: 1px solid rgb(173, 165, 211);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+._4esa .inbox-container .sacrum-pass .header .checkbox.active {
+    background-color: rgb(109, 74, 255);
+    border-color: rgb(109, 74, 255);
+}
+
+._4esa .inbox-container .sacrum-pass .header .checkbox > svg {
+    fill: white;
+    transform: translateY(1px);
+}
+
+._4esa .inbox-container .sacrum-pass .header .checkbox:hover {
+    border-color: rgb(147, 128, 238);
+}
+
+._4esa .inbox-container .sacrum-pass .header .highs-kit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+._4esa .inbox-container .sacrum-pass .header .highs-kit > div {
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+._4esa .inbox-container .sacrum-pass .header .highs-kit > div:not(:last-of-type) {
+    border-right: 1px solid rgb(209, 209, 209);
+}
+
+._4esa .inbox-container .sacrum-pass .header .highs-kit > div img {
+    padding-left: 5px;
+    padding-right: 5px;
+    transform: translateY(2px);
+}
+
+._4esa .container .inbox-container .sacrum-pass .container {
+    display: flex;
+    height: 100%;
+}
+
+._4esa .container .inbox-container .sacrum-pass .container > div {
+    flex: 9;
+}
+
+._4esa .inbox-container .sacrum-pass .container > div:first-of-type {
+    flex: 7;
+    border-right: 1px solid rgb(209, 209, 209);
+}
+
+._4esa .inbox-container .sacrum-pass .container .canned-copy {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(12, 12, 20);
+}
+
+._4esa .inbox-container .sacrum-pass .container .canned-copy > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+._4esa .inbox-container .sacrum-pass .container .canned-copy h1 {
+    all: unset;
+    font-size: 36px;
+    font-weight: 400;
+}
+
+._4esa .inbox-container .sacrum-pass .container .canned-copy span {
+    font-size: 14px;
+    width: 360px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+    border-bottom: 1px solid rgb(209, 209, 209);
+}
+
+._4esa .inbox-container .sacrum-pass .container .canned-copy span strong {
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+._4esa .inbox-container .pryers-seas {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 10px;
+}
+
+._4esa .inbox-container .pryers-seas > div {
+    display: flex;
+    gap: 6px;
+}
+
+._4esa .inbox-container .pryers-seas button {
+    all: unset;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    color: rgb(12, 12, 20);
+    padding: 4px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+._4esa .inbox-container .pryers-seas button.active {
+    background-color: rgb(229, 228, 225);
+}
+
+._4esa .container .sidebar {
+    width: 59px;
+    height: calc(100vh - 68px);
+    background-color: rgb(28, 20, 68);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
 }
