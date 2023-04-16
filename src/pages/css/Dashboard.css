@@ -507,6 +507,67 @@
     background-color: rgb(229, 228, 225);
 }
 
+._4esa .inbox-container .message-container {
+    margin-top: 10px;
+}
+
+._4esa .inbox-container .message-container > div {
+    display: flex;
+    align-items: center;
+    padding: 10px 23px 10px 23px;
+}
+
+._4esa .inbox-container .message-container > div h3 {
+    all: unset;
+}
+
+._4esa .inbox-container .message-container .avatar {
+    width: 34px;
+    height: 34px;
+    background-color: rgb(229, 228, 225);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 14px;
+    font-size: 14px;
+    font-weight: 500;
+    color: rgb(64, 64, 64);
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+._4esa .inbox-container .message-container .avatar.wangle-bit {
+    background-color: rgb(109, 74, 255);
+}
+
+._4esa .inbox-container .message-container .wangle-bit svg {
+    fill: white;
+    width: 16px;
+    height: 16px;
+}
+
+._4esa .inbox-container .message-container .appeared-hut {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    flex: 1;
+    font-size: 15px;
+    font-weight: 600;
+    color: rgb(48, 48, 48);
+}
+
+._4esa .inbox-container .message-container .across-wash .appeared-hut {
+    font-weight: 400;
+}
+
+._4esa .inbox-container .message-container .subnode-ten {
+    height: 45px;
+    font-size: 13px;
+    display: flex;
+    font-weight: 500;
+    color: rgb(107, 107, 107);
+}
+
 ._4esa .container .sidebar {
     width: 59px;
     height: calc(100vh - 68px);

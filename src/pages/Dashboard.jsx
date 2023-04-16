@@ -21,7 +21,7 @@ import BucketIcon from "../assets/Header/Bucket.png"
 import FolderIcon from "../assets/Header/Folder.png"
 import LabelIcon from "../assets/Header/Label.png"
 import {UpgradeIcon} from "../assets/Icons"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import SearchPopup from "../components/SearchPopup"
 import SettingsPopup from "../components/SettingsPopup"
 import AccountsPopup from "../components/AccountsPopup"
@@ -34,10 +34,54 @@ const Dashboard = () => {
     const [hovered, setHovered] = useState(false)
     const [checkbox, setCheckbox] = useState(false)
     const [activeRead, setActiveRead] = useState(0)
+    const [messages, setMessages] = useState([])
 
     const username = "theresa"
     const sidebar = ["Inbox", "Drafts", "Sent", "Starred"]
     const messageSelector = ["All", "Read", "Unread"]
+
+    // List of e-mails
+    const database = [
+        {
+            id: 1,
+            from: "Adguard",
+            message: "Confirm e-mail to use adguard account",
+            date: "Yesterday",
+            read: "unread"
+        },
+        {
+            id: 2,
+            from: "Instagram",
+            message: "Your email confirmation code",
+            date: "Apr 14, 2023",
+            read: "unread"
+        },
+        {
+            id: 3,
+            from: "Proton",
+            message: "Improve your account security",
+            date: "Apr 14, 2023",
+            read: "read"
+        },
+        {
+            id: 4,
+            from: "Proton",
+            message: "Get more out of your inbox",
+            date: "Apr 12, 2023",
+            read: "unread"
+        }
+    ]
+
+    // Filter read, unread e-mails
+    useEffect(() => {
+        if (activeRead === 0) {
+            setMessages(database)
+        } else {
+            setMessages(database.filter(message => {
+                return message.read === messageSelector[activeRead].toLowerCase()
+            }))
+        }
+    }, [activeRead])
 
     const Popup = () => {
         if (popup) {
@@ -249,13 +293,35 @@ const Dashboard = () => {
                                     </div>
                                 </div>
                                 <div className="message-container">
-
+                                    {messages.map(item => {
+                                        console.log(item.read)
+                                        return (
+                                            <div key={item.id} className={item.read === "unread" ? undefined : "across-wash"}>
+                                                {checkbox === true ? (
+                                                    <div className="wangle-bit avatar">
+                                                        <BsCheck2 />
+                                                    </div>
+                                                ) : (
+                                                    <div className="avatar">
+                                                        {item.from[0]}
+                                                    </div>
+                                                )}
+                                                <div className="appeared-hut">
+                                                    <h3>{item.from}</h3>
+                                                    <span>{item.message}</span>
+                                                </div>
+                                                <div className="subnode-ten">
+                                                    <span>{item.date}</span>
+                                                </div>
+                                            </div>
+                                        )
+                                    })}
                                 </div>
                             </div>
                             <div className="canned-copy">
                                 <div>
                                     <h1>Welcome {username[0].toUpperCase()}{username.slice(1,)}</h1>
-                                    <span>You have <strong>2 unread conversations</strong> in your inbox.</span>
+                                    <span>You have <strong>3 unread conversations</strong> in your inbox.</span>
                                     <img src={ConversationsIcon} alt="" />
                                 </div>
                             </div>
