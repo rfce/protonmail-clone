@@ -1,0 +1,203 @@
+._9zvh {
+    position: fixed;
+    bottom: 0px;
+    right: 60px;
+    width: 640px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    z-index: 1;
+}
+
+._9zvh .header {
+    height: 34px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 24px;
+    font-size: 14px;
+    color: white;
+    background-color: rgb(58, 43, 121);
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    box-sizing: border-box;
+}
+
+._9zvh .teemer-sons {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transform: translateY(2px);
+    margin-right: 10px;
+}
+
+._9zvh .teemer-sons > img:first-of-type {
+    margin-right: 3px;
+    transform: translateY(2px);
+}
+
+._9zvh .teemer-sons img {
+    cursor: pointer;
+}
+
+._9zvh .container {
+    display: flex;
+    max-height: 650px;
+    flex-direction: column;
+    color: rgb(12, 12, 20);
+    background-color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    transition: max-height 0.4s ease-out;
+}
+
+._9zvh .container.minimized {
+    margin: 0px;
+    padding: 0px;
+    max-height: 0px;
+    overflow: hidden;
+}
+
+._9zvh .container .flamed-ibex {
+    display: flex;
+    align-items: center;
+    padding-left: 25px;
+    padding-right: 25px;
+    box-sizing: border-box;
+}
+
+._9zvh .container .flamed-ibex h2 {
+    all: unset;
+    color: rgb(37, 37, 37);
+    width: 112px;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+._9zvh .container .flamed-ibex > div {
+    height: 44px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 18px;
+    border-bottom: 1px solid rgb(176, 176, 176);
+}
+
+._9zvh .container .flamed-ibex .lycra-rib {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+._9zvh .container .flamed-ibex .lycra-rib svg {
+    width: 12px;
+    fill: rgb(12, 12, 20);
+    transform: translateY(2px);
+}
+
+._9zvh .container .flamed-ibex input {
+    height: 42px;
+    width: 100%;
+    font-size: 15px;
+    border: none;
+    outline: none;
+}
+
+._9zvh .container .flamed-ibex input::placeholder {
+    color: rgb(139, 139, 139);
+}
+
+._9zvh .container .flamed-ibex .muntings-deep span {
+    color: rgb(87, 59, 204);
+    font-weight: 600;
+    padding-right: 11px;
+}
+
+._9zvh .container .flamed-ibex .muntings-deep img {
+    transform: translateX(-3px);
+}
+
+._9zvh .container .flamed-ibex .muntings-deep.focused,
+._9zvh .container .flamed-ibex .wiper-duct.focused {
+    border-color: rgb(87, 59, 204);
+}
+
+._9zvh .container .bides-aril {
+    width: 100%;
+    height: 100%;
+    height: calc(78vh - 200px);
+    padding: 0px 25px;
+    margin-top: 20px;
+    box-sizing: border-box;
+}
+
+._9zvh .container .bides-aril textarea {
+    width: 100%;
+    height: calc(100% - 20px);
+    resize: none;
+    border: none;
+    outline: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    font-size: 14px;
+}
+
+._9zvh .container .eloiners-pep {
+    padding-left: 20px;
+    margin-top: 15px;
+}
+
+._9zvh .footer {
+    padding: 0px 25px;
+    padding-bottom: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+._9zvh .footer.minimized {
+    margin: 0px;
+    padding: 0px;
+    height: 0px;
+    overflow: hidden;
+}
+
+._9zvh .footer > div {
+    display: flex;
+    align-items: center;
+}
+
+._9zvh .footer .firebug-bum {
+    font-size: 14px;
+    width: 113px;
+    height: 38px;
+    color: white;
+    background-color: rgb(98, 67, 230);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 28px;
+    margin-left: 15px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+._9zvh .footer .firebug-bum svg {
+    width: 15px;
+    height: 15px;
+}
+
+._9zvh .footer .firebug-bum > div {
+    display: flex;
+    align-items: center;
+    padding-right: 5px;
+    height: 100%;
+    width: 15px;
+}
+
+._9zvh .footer .firebug-bum:hover {
+    background-color: rgb(103, 70, 241);
+    cursor: pointer;
+}

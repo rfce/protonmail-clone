@@ -2,9 +2,7 @@ import "./css/Dashboard.css"
 import Logo from "../assets/Logo.png"
 import { TbGridDots } from "react-icons/tb"
 import { BiSearch } from "react-icons/bi"
-import { BsChevronRight, BsPlusLg, BsCheck2 } from "react-icons/bs"
-import { IoMdArrowDropdown } from "react-icons/io"
-import ArrowIcon from "../assets/Arrow.png"
+import { BsChevronRight, BsPlusLg } from "react-icons/bs"
 import SettingsIcon from "../assets/Settings.png"
 import RefreshIcon from "../assets/Refresh.png"
 import ArchiveIcon from "../assets/Archive.png"
@@ -13,75 +11,25 @@ import TrashIcon from "../assets/Trash.png"
 import MailIcon from "../assets/Mail.png"
 import ContactsIcon from "../assets/Contacts.png"
 import CalendarIcon from "../assets/Calendar.png"
-import ConversationsIcon from "../assets/ConversationsIcon.png"
-import MessageIcon from "../assets/Header/Inbox.png"
-import FireIcon from "../assets/Header/Spam.png"
-import DeleteIcon from "../assets/Header/Trash.png"
-import BucketIcon from "../assets/Header/Bucket.png"
-import FolderIcon from "../assets/Header/Folder.png"
-import LabelIcon from "../assets/Header/Label.png"
 import {UpgradeIcon} from "../assets/Icons"
 import { useEffect, useState } from "react"
 import SearchPopup from "../components/SearchPopup"
 import SettingsPopup from "../components/SettingsPopup"
 import AccountsPopup from "../components/AccountsPopup"
 import GridPopup from "../components/GridPopup"
+import Inbox from "./Inbox"
+import EmptyFolder from "./EmptyFolder"
+import NewMessage from "./NewMessage"
 
 const Dashboard = () => {
     const [popup, setPopup] = useState(false)
     const [activeSidebar, setActiveSidebar] = useState(0)
     const [accordian, setAccordian] = useState([])
     const [hovered, setHovered] = useState(false)
-    const [checkbox, setCheckbox] = useState(false)
-    const [activeRead, setActiveRead] = useState(0)
-    const [messages, setMessages] = useState([])
+    const [compose, setCompose] = useState(false)
 
     const username = "theresa"
     const sidebar = ["Inbox", "Drafts", "Sent", "Starred"]
-    const messageSelector = ["All", "Read", "Unread"]
-
-    // List of e-mails
-    const database = [
-        {
-            id: 1,
-            from: "Adguard",
-            message: "Confirm e-mail to use adguard account",
-            date: "Yesterday",
-            read: "unread"
-        },
-        {
-            id: 2,
-            from: "Instagram",
-            message: "Your email confirmation code",
-            date: "Apr 14, 2023",
-            read: "unread"
-        },
-        {
-            id: 3,
-            from: "Proton",
-            message: "Improve your account security",
-            date: "Apr 14, 2023",
-            read: "read"
-        },
-        {
-            id: 4,
-            from: "Proton",
-            message: "Get more out of your inbox",
-            date: "Apr 12, 2023",
-            read: "unread"
-        }
-    ]
-
-    // Filter read, unread e-mails
-    useEffect(() => {
-        if (activeRead === 0) {
-            setMessages(database)
-        } else {
-            setMessages(database.filter(message => {
-                return message.read === messageSelector[activeRead].toLowerCase()
-            }))
-        }
-    }, [activeRead])
 
     const Popup = () => {
         if (popup) {
@@ -118,8 +66,13 @@ const Dashboard = () => {
         return require("../assets/" + imageName + ".png")
     }
 
+    useEffect(() => {
+        document.title = `${sidebar[activeSidebar]} | theresa@proton.me | Proton Mail`
+    }, [activeSidebar])
+
     return (
         <div className="_4esa">
+            {compose === true ? <NewMessage username={username} setPopup={setCompose} /> : undefined}
             <div className="navbar">
                 <div className="logo-caret">
                     <img src={Logo} alt="" />
@@ -161,7 +114,7 @@ const Dashboard = () => {
             </div>
             <div className="container">
                 <div className="crash-doe">
-                    <button>New message</button>
+                    <button onClick={() => setCompose(prev => !prev)}>New message</button>
                     {sidebar.map((item, index) => (
                         <div key={index} 
                             className={activeSidebar === index ? "recode-hang active" : "recode-hang"}
@@ -172,6 +125,9 @@ const Dashboard = () => {
                             <img src={imageLocation(item, index)} alt="" />
                             {item}
                             {activeSidebar === index ? <img className="iambic-het" src={RefreshIcon} alt="" /> : undefined}
+                            {item === "Inbox" ? (
+                                <span className={activeSidebar === 0 ? "rubied-jet" : "rubied-jet inactive" }>3</span>
+                            ) : undefined}
                         </div>
                     ))}
                     <div className="slurry-crib">
@@ -246,88 +202,7 @@ const Dashboard = () => {
                         </div>
                     </div>
                 </div>
-                <div className="inbox-container">
-                    <div className="sacrum-pass">
-                        <div className="header">
-                            <div className={checkbox ? "checkbox active" : "checkbox"}
-                                onClick={() => setCheckbox(prev => !prev)}
-                            >
-                                {checkbox ? <BsCheck2 /> : undefined}
-                            </div>
-                            <IoMdArrowDropdown />
-                            {checkbox ? (
-                                <div className="highs-kit">
-                                    <div>
-                                        <img src={MessageIcon} alt="" />
-                                    </div>
-                                    <div>
-                                        <img src={DeleteIcon} alt="" />
-                                        <img src={BucketIcon} alt="" />
-                                        <img src={FireIcon} alt="" />
-                                    </div>
-                                    <div>
-                                        <img src={FolderIcon} alt="" />
-                                        <img src={LabelIcon} alt="" />
-                                    </div>
-                                </div>
-                            ) : undefined}
-                        </div>
-                        <div className="container">
-                            <div>
-                                <div className="pryers-seas">
-                                    <div>
-                                        {messageSelector.map((item, index) => {
-                                            return <button 
-                                                    key={index}
-                                                    onClick={() => setActiveRead(index)} 
-                                                    className={activeRead === index ? "active" : undefined}
-                                            >{item}
-                                            </button>
-                                        })}
-                                    </div>
-                                    <div>
-                                        <button>
-                                            Newest first
-                                            <img src={ArrowIcon} alt="" />
-                                        </button>
-                                    </div>
-                                </div>
-                                <div className="message-container">
-                                    {messages.map(item => {
-                                        console.log(item.read)
-                                        return (
-                                            <div key={item.id} className={item.read === "unread" ? undefined : "across-wash"}>
-                                                {checkbox === true ? (
-                                                    <div className="wangle-bit avatar">
-                                                        <BsCheck2 />
-                                                    </div>
-                                                ) : (
-                                                    <div className="avatar">
-                                                        {item.from[0]}
-                                                    </div>
-                                                )}
-                                                <div className="appeared-hut">
-                                                    <h3>{item.from}</h3>
-                                                    <span>{item.message}</span>
-                                                </div>
-                                                <div className="subnode-ten">
-                                                    <span>{item.date}</span>
-                                                </div>
-                                            </div>
-                                        )
-                                    })}
-                                </div>
-                            </div>
-                            <div className="canned-copy">
-                                <div>
-                                    <h1>Welcome {username[0].toUpperCase()}{username.slice(1,)}</h1>
-                                    <span>You have <strong>3 unread conversations</strong> in your inbox.</span>
-                                    <img src={ConversationsIcon} alt="" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {activeSidebar === 0 ? <Inbox username={username} /> : <EmptyFolder />}
                 <div className="sidebar">
                     <img src={ContactsIcon} alt="" />
                     <img src={CalendarIcon} alt="" />

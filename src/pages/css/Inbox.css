@@ -1,0 +1,242 @@
+._7ohc {
+    background-color: rgb(28, 20, 68);
+    width: 100%;
+}
+
+._7ohc .sacrum-pass {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+._7ohc .sacrum-pass .header {
+    height: 48px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    grid-gap: 15px;
+    padding-left: 30px;
+    border-bottom: 1px solid rgb(209, 209, 209);
+}
+
+._7ohc .sacrum-pass .header .checkbox {
+    width: 19px;
+    height: 19px;
+    border-radius: 5px;
+    border: 1px solid rgb(173, 165, 211);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+._7ohc .sacrum-pass .header .checkbox.active {
+    background-color: rgb(109, 74, 255);
+    border-color: rgb(109, 74, 255);
+}
+
+._7ohc .sacrum-pass .header .checkbox > svg {
+    fill: white;
+    transform: translateY(1px);
+}
+
+._7ohc .sacrum-pass .header .checkbox:hover {
+    border-color: rgb(147, 128, 238);
+}
+
+._7ohc .sacrum-pass .header .highs-kit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+}
+
+._7ohc .sacrum-pass .header .highs-kit > div {
+    position: relative;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    margin-left: 3px;
+    margin-right: 3px;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+._7ohc .sacrum-pass .header .highs-kit > div.hovered {
+    background-color: rgba(194, 193, 192, 0.173);
+    border-radius: 8px;
+}
+
+._7ohc .sacrum-pass .header .highs-kit > div:nth-of-type(2),
+._7ohc .sacrum-pass .header .highs-kit > div:nth-of-type(5) {
+    margin-left: 10px;
+}
+
+._7ohc .sacrum-pass .header .highs-kit > div:nth-of-type(1)::after,
+._7ohc .sacrum-pass .header .highs-kit > div:nth-of-type(4)::after {
+    content: "";
+    position: absolute;
+    top: 5px;
+    right: -6px;
+    height: 28px;
+    border-right: 1px solid rgb(209, 209, 209);
+}
+
+._7ohc .sacrum-pass .header .highs-kit > div img {
+    padding-left: 5px;
+    padding-right: 5px;
+    transform: translateY(1px);
+}
+
+._7ohc .sacrum-pass .container {
+    display: flex;
+    height: 100%;
+}
+
+._7ohc .sacrum-pass .container > div {
+    flex: 9;
+}
+
+._7ohc .sacrum-pass .container > div:first-of-type {
+    flex: 7;
+    border-right: 1px solid rgb(209, 209, 209);
+}
+
+._7ohc .sacrum-pass .container .canned-copy {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(12, 12, 20);
+}
+
+._7ohc .sacrum-pass .container .canned-copy > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+._7ohc .sacrum-pass .container .canned-copy h1 {
+    all: unset;
+    font-size: 36px;
+    font-weight: 400;
+}
+
+._7ohc .sacrum-pass .container .canned-copy span {
+    font-size: 14px;
+    width: 360px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+    border-bottom: 1px solid rgb(209, 209, 209);
+}
+
+._7ohc .sacrum-pass .container .canned-copy span strong {
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+._7ohc .pryers-seas {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 10px;
+}
+
+._7ohc .pryers-seas > div {
+    display: flex;
+    gap: 6px;
+}
+
+._7ohc .pryers-seas button {
+    all: unset;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    color: rgb(12, 12, 20);
+    padding: 4px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+._7ohc .pryers-seas button.active {
+    background-color: rgb(229, 228, 225);
+}
+
+._7ohc .message-container {
+    margin-top: 10px;
+}
+
+._7ohc .message-container .toked-brin {
+    padding: 0px 15px 0px 15px;
+}
+
+._7ohc .message-container .voidness-bam {
+    display: flex;
+    align-items: center;
+    padding: 10px 12px;
+}
+
+._7ohc .message-container .voidness-bam:hover {
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+._7ohc .message-container .voidness-bam h3 {
+    all: unset;
+}
+
+._7ohc .message-container .avatar {
+    width: 34px;
+    height: 34px;
+    background-color: rgb(229, 228, 225);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 14px;
+    font-size: 14px;
+    font-weight: 500;
+    color: rgb(64, 64, 64);
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+._7ohc .message-container .avatar.wangle-bit {
+    background-color: rgb(109, 74, 255);
+}
+
+._7ohc .message-container .wangle-bit svg {
+    fill: white;
+    width: 16px;
+    height: 16px;
+}
+
+._7ohc .message-container .appeared-hut {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    flex: 1;
+    font-size: 15px;
+    font-weight: 600;
+    color: rgb(48, 48, 48);
+}
+
+._7ohc .message-container .across-wash .appeared-hut {
+    font-weight: 400;
+}
+
+._7ohc .message-container .subnode-ten {
+    height: 45px;
+    font-size: 13px;
+    display: flex;
+    font-weight: 500;
+    color: rgb(107, 107, 107);
+}

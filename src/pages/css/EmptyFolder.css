@@ -1,0 +1,105 @@
+._5fhr {
+    background-color: rgb(28, 20, 68);
+    width: 100%;
+}
+
+._5fhr .footing-ors {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+._5fhr .footing-ors .header {
+    height: 48px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    grid-gap: 15px;
+    padding-left: 30px;
+    border-bottom: 1px solid rgb(209, 209, 209);
+}
+
+._5fhr .footing-ors .header .checkbox {
+    width: 19px;
+    height: 19px;
+    border-radius: 5px;
+    border: 1px solid rgb(173, 165, 211);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+._5fhr .footing-ors .header .checkbox.active {
+    background-color: rgb(109, 74, 255);
+    border-color: rgb(109, 74, 255);
+}
+
+._5fhr .footing-ors .header .checkbox > svg {
+    fill: white;
+    transform: translateY(1px);
+}
+
+._5fhr .footing-ors .header .checkbox:hover {
+    border-color: rgb(147, 128, 238);
+}
+
+._5fhr .footing-ors .baaskaps-fled {
+    height: 34px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgb(225, 225, 225);
+    padding-right: 14px;
+}
+
+._5fhr .footing-ors .baaskaps-fled > div:first-of-type {
+    padding-left: 15px;
+}
+
+._5fhr .footing-ors .baaskaps-fled button {
+    all: unset;
+    font-size: 12px;
+    color: rgb(12, 12, 20);
+    padding: 4px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+._5fhr .footing-ors .baaskaps-fled button.active {
+    background-color: rgb(229, 228, 225);
+}
+
+._5fhr .footing-ors .baaskaps-fled .acers-hid {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+}
+
+._5fhr .footing-ors .ropiness-ales {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+._5fhr .footing-ors .ropiness-ales > * {
+    transform: translateY(-20px);
+}
+
+._5fhr .footing-ors .ropiness-ales h2 {
+    font-size: 20px;
+    margin-top: 25px;
+}
+
+._5fhr .footing-ors .ropiness-ales span {
+    font-size: 15px;
+    margin-top: 10px;
+}
