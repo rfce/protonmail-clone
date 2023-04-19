@@ -181,17 +181,49 @@
 }
 
 ._7ohc .message-container .voidness-bam {
+    position: relative;
     display: flex;
     align-items: center;
     padding: 10px 12px;
-}
-
-._7ohc .message-container .voidness-bam:hover {
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: 8px;
+    user-select: none;
 }
 
 ._7ohc .message-container .voidness-bam h3 {
     all: unset;
+}
+
+._7ohc .message-container .voidness-bam .soothers-sac {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    height: 100%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+._7ohc .message-container .voidness-bam .soothers-sac svg {
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
+    fill: rgb(87, 87, 87);
+    transform: translate(-4px, 2px);
+}
+
+._7ohc .message-container .voidness-bam .soothers-sac img {
+    cursor: pointer;
+}
+
+._7ohc .message-container .voidness-bam .soothers-sac .psalmed-vast {
+    transform: translateY(2px);
+}
+
+._7ohc .message-container .execs-fine {
+    margin-left: -2px;
 }
 
 ._7ohc .message-container .avatar {
@@ -237,6 +269,13 @@
     height: 45px;
     font-size: 13px;
     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: end;
     font-weight: 500;
     color: rgb(107, 107, 107);
+}
+
+._7ohc .message-container .subnode-ten img {
+    transform: translateY(2px);
 }

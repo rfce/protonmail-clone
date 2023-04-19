@@ -184,6 +184,10 @@
     background-color: rgba(74, 54, 143, 0.185);
 }
 
+._4esa .container .crash-doe .recode-hang img:first-of-type {
+    margin-right: 2px;
+}
+
 ._4esa .container .crash-doe .iambic-het {
     margin-left: auto;
 }
@@ -195,6 +199,18 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+._4esa .container .crash-doe .griffins-bad {
+    margin-left: 8px;
+    margin-right: 10px;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgb(123, 131, 154);
+}
+
+._4esa .container .crash-doe .griffins-bad.inactive {
+    margin-left: auto;
 }
 
 ._4esa .container .crash-doe .slurry-crib > div {

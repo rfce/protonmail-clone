@@ -27,6 +27,8 @@ const Dashboard = () => {
     const [accordian, setAccordian] = useState([])
     const [hovered, setHovered] = useState(false)
     const [compose, setCompose] = useState(false)
+    const [unread, setUnread] = useState(0)
+    const [starred, setStarred] = useState(0)
 
     const username = "theresa"
     const sidebar = ["Inbox", "Drafts", "Sent", "Starred"]
@@ -126,7 +128,10 @@ const Dashboard = () => {
                             {item}
                             {activeSidebar === index ? <img className="iambic-het" src={RefreshIcon} alt="" /> : undefined}
                             {item === "Inbox" ? (
-                                <span className={activeSidebar === 0 ? "rubied-jet" : "rubied-jet inactive" }>3</span>
+                                <span className={activeSidebar === 0 ? "rubied-jet" : "rubied-jet inactive" }>{unread}</span>
+                            ) : undefined}
+                            {item === "Starred" ? (
+                                <span className={activeSidebar === 3 ? "griffins-bad" : "griffins-bad inactive"}>{starred}</span>
                             ) : undefined}
                         </div>
                     ))}
@@ -202,7 +207,13 @@ const Dashboard = () => {
                         </div>
                     </div>
                 </div>
-                {activeSidebar === 0 ? <Inbox username={username} /> : <EmptyFolder />}
+                {(activeSidebar === 0 || (activeSidebar === 3 && starred > 0)) ? 
+                        <Inbox 
+                            username={username} 
+                            setUnread={setUnread} 
+                            setStarred={setStarred} 
+                            sidebar={activeSidebar} 
+                        /> : <EmptyFolder />}
                 <div className="sidebar">
                     <img src={ContactsIcon} alt="" />
                     <img src={CalendarIcon} alt="" />
