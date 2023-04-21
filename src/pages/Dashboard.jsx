@@ -17,8 +17,8 @@ import SearchPopup from "../components/SearchPopup"
 import SettingsPopup from "../components/SettingsPopup"
 import AccountsPopup from "../components/AccountsPopup"
 import GridPopup from "../components/GridPopup"
-import Inbox from "./Inbox"
-import EmptyFolder from "./EmptyFolder"
+import Inbox from "../components/Inbox"
+import EmptyFolder from "../components/EmptyFolder"
 import NewMessage from "./NewMessage"
 
 const Dashboard = () => {

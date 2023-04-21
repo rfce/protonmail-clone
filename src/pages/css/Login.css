@@ -1,0 +1,208 @@
+._5ayn {
+    min-height: 100vh;
+    background-image: url("../../assets/background.jpg");
+}
+
+._5ayn .navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+._5ayn .navigation > div {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    font-size: 14px;
+    border-radius: 10px;
+    user-select: none;
+}
+
+._5ayn .navigation > div span {
+    padding-right: 8px;
+}
+
+._5ayn .container {
+    display: flex;
+    justify-content: center;
+}
+
+._5ayn .whipped-bug {
+    padding: 40px;
+    margin-bottom: 40px;
+    color: rgb(12, 12, 20);
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+._5ayn .whipped-bug .header {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 28px;
+}
+
+._5ayn .whipped-bug .header h2 {
+    all: unset;
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+._5ayn .whipped-bug .header span {
+    color: rgb(112, 109, 107);
+    font-size: 14px;
+}
+
+._5ayn .whipped-bug .tabstop-ebbs > div {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 24px;
+}
+
+._5ayn .whipped-bug .tabstop-ebbs span {
+    font-size: 15px;
+    margin-bottom: 7px;
+    font-weight: 500;
+}
+
+._5ayn .whipped-bug .tabstop-ebbs input {
+    width: 392px;
+    height: 42px;
+    border-radius: 8px;
+    padding-left: 15px;
+    font-size: 15px;
+    border: 1px solid rgb(176, 176, 176);
+    box-sizing: border-box;
+    outline: none;
+}
+
+._5ayn .whipped-bug .tabstop-ebbs input:focus {
+    border-color: rgb(126, 126, 189);
+}
+
+._5ayn .whipped-bug .tabstop-ebbs .praised-yald {
+    position: absolute;
+    top: 35px;
+    right: 10px;
+    color: rgb(112, 109, 107);
+    font-size: 15px;
+}
+
+._5ayn .whipped-bug .tabstop-ebbs .praised-yald svg {
+    color: rgb(80, 80, 80);
+    padding-left: 5px;
+    transform: translateY(2px);
+}
+
+._5ayn .whipped-bug .kittened-web {
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgb(190, 190, 190);
+}
+
+._5ayn .whipped-bug .kittened-web button {
+    width: 100%;
+    height: 44px;
+    margin-top: 30px;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+    background-color: rgb(98, 67, 230);
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+._5ayn .whipped-bug .kittened-web button:hover {
+    background-color: rgb(91, 64, 211);
+}
+
+._5ayn .whipped-bug .kittened-web > div {
+    width: 100%;
+    text-align: center;
+    font-size: 15px;
+    margin-top: 20px;
+}
+
+._5ayn .whipped-bug .kittened-web > div span {
+    color: rgb(98, 67, 230);
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+._5ayn .whipped-bug .kittened-web > div span:hover {
+    text-decoration: none;
+}
+
+._5ayn .whipped-bug .domes-pout {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    color: rgb(112, 109, 107);
+    margin-top: 20px;
+}
+
+._5ayn .whipped-bug .domes-pout span {
+    font-size: 15px;
+    color: rgb(98, 67, 230);
+    text-decoration: underline;
+}
+
+._5ayn .whipped-bug .realise-rid > div:first-of-type {
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+._5ayn .whipped-bug .realise-rid > div:first-of-type svg {
+    width: 18px;
+    height: 18px;
+    fill: rgb(98, 67, 230);
+    margin-left: 5px;
+    transform: translateY(1px);
+}
+
+._5ayn .whipped-bug .realise-rid .checkbox {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 19px;
+    height: 19px;
+    border: 1px solid rgb(154, 154, 154);
+    border-radius: 5px;
+    margin-right: 8px;
+}
+
+._5ayn .whipped-bug .realise-rid .checkbox.active {
+    border-color: rgb(98, 67, 230);
+    background-color: rgb(98, 67, 230);
+}
+
+._5ayn .whipped-bug .realise-rid .checkbox .uprootal-lug {
+    position: absolute;
+    left: -4px;
+    width: 17px;
+    height: 17px;
+    fill: white;
+}
+
+._5ayn .whipped-bug .prankish-sod {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-left: 29px;
+    margin-top: 5px;
+    font-size: 15px;
+    color: rgb(112, 109, 107);
+}
+
+._5ayn .whipped-bug .prankish-sod .marrows-chew {
+    text-decoration: underline;
+}
