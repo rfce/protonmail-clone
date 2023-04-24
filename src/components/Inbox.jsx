@@ -14,8 +14,8 @@ import FolderIcon from "../assets/Header/Folder.png"
 import LabelIcon from "../assets/Header/Label.png"
 import ArrowIcon from "../assets/Arrow.png"
 import MailboxHover from "../assets/Hover/Mailbox.png"
-import SpamHover from "../assets/Hover/Spam.png"
-import TrashHover from "../assets/Hover/Trash.png"
+import SpamHover from "../assets/Hover/Fire.png"
+import TrashHover from "../assets/Hover/Delete.png"
 import BucketHover from "../assets/Hover/Bucket.png"
 import LabelHover from "../assets/Hover/Label.png"
 import FolderHover from "../assets/Hover/Folder.png"
@@ -175,35 +175,43 @@ const Inbox = ({ username, setUnread, setStarred, sidebar }) => {
                                             </div>
                                             {activeMessage === item.id ? (
                                                 <div className="soothers-sac">
-                                                    {item.read === "unread" ? 
+                                                    <div className="crisis-sons">
+                                                        {item.read === "unread" ? 
+                                                            <img 
+                                                                onClick={() => setDatabase(prev => {
+                                                                    const copy = [...prev]
+                                                                    copy[item.id - 1].read = "read"
+                                                                    return copy
+                                                                })}
+                                                                className="psalmed-vast" 
+                                                                src={MessageIcon} 
+                                                                alt="" 
+                                                            /> : <MdOutlineMarkunread 
+                                                                onClick={() => setDatabase(prev => {
+                                                                    const copy = [...prev]
+                                                                    copy[item.id - 1].read = "unread"
+                                                                    return copy
+                                                                })}
+                                                            />}
+                                                    </div>
+                                                    <div className="crisis-sons">
+                                                        <img className="psalmed-vast" src={DeleteIcon} alt="" />
+                                                    </div>
+                                                    <div className="crisis-sons">
+                                                        <img src={BucketIcon} alt="" />
+                                                    </div>
+                                                    <div className="crisis-sons">
                                                         <img 
+                                                            className={item.starred === true ? "execs-fine" : undefined}
                                                             onClick={() => setDatabase(prev => {
-                                                                const copy = [...prev]
-                                                                copy[item.id - 1].read = "read"
-                                                                return copy
+                                                                    const copy = [...prev]
+                                                                    copy[item.id - 1].starred = !prev[item.id - 1].starred
+                                                                    return copy
                                                             })}
-                                                            className="psalmed-vast" 
-                                                            src={MessageIcon} 
-                                                            alt="" 
-                                                        /> : <MdOutlineMarkunread 
-                                                            onClick={() => setDatabase(prev => {
-                                                                const copy = [...prev]
-                                                                copy[item.id - 1].read = "unread"
-                                                                return copy
-                                                            })}
-                                                        />}
-                                                    <img className="psalmed-vast" src={DeleteIcon} alt="" />
-                                                    <img src={BucketIcon} alt="" />
-                                                    <img 
-                                                        className={item.starred === true ? "execs-fine" : undefined}
-                                                        onClick={() => setDatabase(prev => {
-                                                                const copy = [...prev]
-                                                                copy[item.id - 1].starred = !prev[item.id - 1].starred
-                                                                return copy
-                                                        })}
-                                                        src={item.starred === true ? StarFilled : StarIcon} 
-                                                        alt=""
-                                                    />
+                                                            src={item.starred === true ? StarFilled : StarIcon} 
+                                                            alt=""
+                                                        />
+                                                    </div>
                                                 </div>)
                                              : undefined}
                                         </div>

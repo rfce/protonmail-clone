@@ -201,7 +201,7 @@
     background-color: white;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 2px;
     padding-left: 10px;
     padding-right: 10px;
 }
@@ -211,11 +211,22 @@
     width: 18px;
     height: 18px;
     fill: rgb(87, 87, 87);
-    transform: translate(-4px, 2px);
+    transform: translate(0px, 2px);
 }
 
-._7ohc .message-container .voidness-bam .soothers-sac img {
+._7ohc .message-container .voidness-bam .soothers-sac .crisis-sons {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
     cursor: pointer;
+    box-sizing: border-box;
+}
+
+._7ohc .message-container .voidness-bam .soothers-sac .crisis-sons:hover {
+    background-color: rgba(194, 193, 192, 0.12);
 }
 
 ._7ohc .message-container .voidness-bam .soothers-sac .psalmed-vast {

@@ -5,10 +5,6 @@ import { BiSearch } from "react-icons/bi"
 import { BsChevronRight, BsPlusLg } from "react-icons/bs"
 import SettingsIcon from "../assets/Settings.png"
 import RefreshIcon from "../assets/Refresh.png"
-import ArchiveIcon from "../assets/Archive.png"
-import SpamIcon from "../assets/Spam.png"
-import TrashIcon from "../assets/Trash.png"
-import MailIcon from "../assets/Mail.png"
 import ContactsIcon from "../assets/Contacts.png"
 import CalendarIcon from "../assets/Calendar.png"
 import {UpgradeIcon} from "../assets/Icons"
@@ -32,6 +28,7 @@ const Dashboard = () => {
 
     const username = "theresa"
     const sidebar = ["Inbox", "Drafts", "Sent", "Starred"]
+    const secondarySidebar= ["Archive", "Spam", "Trash", "All mail"]
 
     const Popup = () => {
         if (popup) {
@@ -147,22 +144,19 @@ const Dashboard = () => {
                         </div>
                         {accordian.includes("more") ? (
                             <div className="taskers-ten">
-                                <div>
-                                    <img src={ArchiveIcon} alt="" />
-                                    Archive
-                                </div>
-                                <div>
-                                    <img src={SpamIcon} alt="" />
-                                    Spam
-                                </div>
-                                <div>
-                                    <img src={TrashIcon} alt="" />
-                                    Trash
-                                </div>
-                                <div>
-                                    <img src={MailIcon} alt="" />
-                                    All mail
-                                </div>
+                                {secondarySidebar.map((item, index) => {
+                                    return (
+                                        <div
+                                            className={activeSidebar === index + 4 ? "rebater-foe active" : "rebater-foe"}
+                                            onClick={() => setActiveSidebar(index + 4)}
+                                            onMouseEnter={() => setHovered(item.toLowerCase())}
+                                            onMouseLeave={() => setHovered(false)}
+                                        >
+                                            <img src={imageLocation(item, index + 4)} alt="" />
+                                            {item}
+                                        </div>
+                                    )
+                                })}
                             </div>
                         ) : undefined}
                         <div
