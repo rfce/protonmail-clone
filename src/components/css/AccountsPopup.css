@@ -91,10 +91,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
 ._0gvl .container .account-box button:first-of-type {
     color: rgb(51, 51, 51);
     background-color: white;
     border: 1px solid rgb(196, 196, 196);
+}
+
+._0gvl .container .account-box button:last-of-type:hover {
+    background-color: rgb(92, 69, 195);
 }

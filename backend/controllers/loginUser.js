@@ -9,7 +9,8 @@ const loginUser = async (req, res) => {
     if (username.includes("@") && !username.includes("@proton.me")) {
         return res.json({
             status: "fail",
-            reason: "Please sign-in with a proton.me id"
+            reason: "Please sign-in with a proton.me id",
+            errorin: "username"
         })
     }
 
@@ -22,7 +23,8 @@ const loginUser = async (req, res) => {
     if (user === null) {
         return res.json({
             status: "fail",
-            reason: "The username you entered doesn't belong to an account. Please check your username and try again. "
+            reason: "Username does not exist",
+            errorin: "username"
         })
     }
 
@@ -34,7 +36,8 @@ const loginUser = async (req, res) => {
     if (match === false) {
         return res.json({
             status: "fail",
-            reason: "Sorry, your password was incorrect. Please double-check your password."
+            reason: "Incorrect password",
+            errorin: "password"
         })
     }
 

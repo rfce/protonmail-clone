@@ -98,6 +98,27 @@
     transform: translateY(2px);
 }
 
+._5ayn .whipped-bug .tabstop-ebbs .gumdrops-ace {
+    position: relative;
+}
+
+._5ayn .whipped-bug .tabstop-ebbs .gumdrops-ace .reemploy-pion {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    bottom: -20px;
+    left: 0px;
+    color: rgb(220, 50, 81);
+    font-size: 11px;
+    font-weight: 500;
+}
+
+._5ayn .whipped-bug .tabstop-ebbs .gumdrops-ace input.error {
+    border-color: rgb(220, 50, 81);
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
 ._5ayn .whipped-bug .kittened-web {
     padding-bottom: 20px;
     border-bottom: 1px solid rgb(190, 190, 190);
@@ -115,6 +136,12 @@
     background-color: rgb(98, 67, 230);
     box-sizing: border-box;
     cursor: pointer;
+}
+
+._5ayn .whipped-bug .kittened-web button img {
+    width: 20px;
+    height: 20px;
+    transform: translateY(2px);
 }
 
 ._5ayn .whipped-bug .kittened-web button:hover {

@@ -1,14 +1,23 @@
 import "./css/AccountsPopup.css"
 import { IoIosArrowForward } from "react-icons/io"
 import ExternalLink from "../assets/External.png"
+import { useNavigate } from "react-router-dom"
 
 const AccountsPopup = ({username, setPopup}) => {
+    const navigate = useNavigate()
+
+    const handleSignout = () => {
+        localStorage.removeItem("username")
+        localStorage.removeItem("token")
+        navigate("/account/sign-in")
+    }
+
     return (
         <div 
             className="_0gvl"
             onClick={() => setPopup(false)}
         >
-            <div className="container">
+            <div className="container" onClick={e => e.stopPropagation()}>
                 <div>
                     <span>{username}</span>
                     <span>{username}@proton.me</span>
@@ -32,7 +41,7 @@ const AccountsPopup = ({username, setPopup}) => {
                 </div>
                 <div className="account-box">
                     <button>Switch or add account</button>
-                    <button>Sign out</button>
+                    <button onClick={() => handleSignout()}>Sign out</button>
                 </div>
             </div>
         </div>

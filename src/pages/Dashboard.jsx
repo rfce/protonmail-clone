@@ -16,6 +16,7 @@ import GridPopup from "../components/GridPopup"
 import Inbox from "../components/Inbox"
 import EmptyFolder from "../components/EmptyFolder"
 import NewMessage from "./NewMessage"
+import { useNavigate } from "react-router-dom"
 
 const Dashboard = () => {
     const [popup, setPopup] = useState(false)
@@ -26,7 +27,14 @@ const Dashboard = () => {
     const [unread, setUnread] = useState(0)
     const [starred, setStarred] = useState(0)
 
-    const username = "theresa"
+    const navigate = useNavigate()
+
+    let username = localStorage.getItem("username")
+
+    if (username === null) {
+        username = "undefined"
+        navigate("/account/sign-in")
+    }
     const sidebar = ["Inbox", "Drafts", "Sent", "Starred"]
     const secondarySidebar= ["Archive", "Spam", "Trash", "All mail"]
 

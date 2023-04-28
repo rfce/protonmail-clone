@@ -11,14 +11,16 @@ const registerUser = async (req, res) => {
         if (username.length < 4 || username.length > 20) {
             return res.json({
                 status: "fail",
-                reason: "Username must be 4-20 characters long"
+                reason: "Username must be 4-20 characters long",
+                errorin: "username"
             })
         }
 
         if (username.startsWith("-") || username.endsWith("-")) {
             return res.json({
                 status: "fail",
-                reason: "Username can't start or end with hyphen"
+                reason: "Username can't start or end with hyphen",
+                errorin: "username"
             })
         }
 
@@ -27,13 +29,15 @@ const registerUser = async (req, res) => {
         if (match !== null) {
             return res.json({
                 status: "fail",
-                reason: "Username can contain alphabets, numbers, hyphen and period"
+                reason: "Username can contain alphabets, numbers, hyphen and period",
+                errorin: "username"
             })
         }
     } else {
         return res.json({
             status: "fail",
-            reason: "Username is required"
+            reason: "Username is required",
+            errorin: "username"
         })
     }
 
@@ -44,7 +48,8 @@ const registerUser = async (req, res) => {
         if (password.length < 8) {
             return res.json({
                 status: "fail",
-                reason: "Password should have atleast eight characters"
+                reason: "Password should have atleast eight characters",
+                errorin: "password"
             })
         }
 
@@ -56,13 +61,15 @@ const registerUser = async (req, res) => {
         if (small === null || capital === null || symbol === null || number === null) {
             return res.json({
                 status: "fail",
-                reason: "Password must include capital, small alphabets, numbers and a symbol"
+                reason: "Password must include capital, small alphabets, numbers and a symbol",
+                errorin: "password"
             })
         }
     } else {
         return res.json({
             status: "fail",
-            reason: "Password is required"
+            reason: "Password is required",
+            errorin: "password"
         })
     }
 
@@ -74,7 +81,8 @@ const registerUser = async (req, res) => {
     if (duplicate !== null) {
         return res.json({
             status: "fail",
-            reason: "This username isn't available. Please try another."
+            reason: "This username is not available",
+            errorin: "username"
         })
     }
 
