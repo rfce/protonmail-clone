@@ -19,56 +19,26 @@ import TrashHover from "../assets/Hover/Delete.png"
 import BucketHover from "../assets/Hover/Bucket.png"
 import LabelHover from "../assets/Hover/Label.png"
 import FolderHover from "../assets/Hover/Folder.png"
+import axios from "axios"
+import api from "../config/backend"
 
-const Inbox = ({ username, setUnread, setStarred, sidebar }) => {
+const Inbox = ({ username, unread, setUnread, setStarred, sidebar, database, setDatabase }) => {
     const [checkbox, setCheckbox] = useState(false)
     const [activeRead, setActiveRead] = useState(0)
     const [messages, setMessages] = useState([])
     const [activeCheckbox, setActiveCheckbox] = useState(false)
     const [activeMessage, setActiveMessage] = useState(false)
-
-    const [database, setDatabase] = useState([
-        {
-            id: 1,
-            from: "Adguard",
-            message: "Confirm e-mail to use adguard account",
-            date: "Yesterday",
-            read: "read",
-            starred: false
-        },
-        {
-            id: 2,
-            from: "Instagram",
-            message: "Your email confirmation code",
-            date: "Apr 14, 2023",
-            read: "unread",
-            starred: false
-        },
-        {
-            id: 3,
-            from: "Proton",
-            message: "Improve your account security",
-            date: "Apr 14, 2023",
-            read: "read",
-            starred: true
-        },
-        {
-            id: 4,
-            from: "Proton",
-            message: "Get more out of your inbox",
-            date: "Apr 12, 2023",
-            read: "unread",
-            starred: true
-        }
-    ])
+    const [token, setToken] = useState(undefined)
 
     const messageSelector = ["All", "Read", "Unread"]
     const headerButtons = [MessageIcon, DeleteIcon, BucketIcon, FireIcon, FolderIcon, LabelIcon]
     const headerButtonsHovered = [MailboxHover, TrashHover, BucketHover, SpamHover, FolderHover, LabelHover]
     
     useEffect(() => {
+        setToken(localStorage.getItem("token"))
+
         // Set unread messages count
-        const unread = database.filter(message => message.read === "unread")
+        const unread = database.filter(message => message.read === false)
 
         setUnread(unread.length)
 
@@ -82,7 +52,7 @@ const Inbox = ({ username, setUnread, setStarred, sidebar }) => {
             setMessages(database)
         } else {
             setMessages(database.filter(message => {
-                return message.read === messageSelector[activeRead].toLowerCase()
+                return activeRead === 1 ? message.read === true : message.read === false
             }))
         }
 
@@ -98,6 +68,36 @@ const Inbox = ({ username, setUnread, setStarred, sidebar }) => {
             }
         }
     }, [activeRead, database, sidebar])
+
+    const options = { year: 'numeric', month: 'long', day: 'numeric' }
+
+    const handleRead = async (index, hash, read) => {
+        setDatabase(prev => {
+            const copy = [...prev]
+            copy[index].read = read
+            return copy
+        })
+
+        const response = await axios.post(`${api}/toggle-read`, {token, hash, read})
+
+        // Todo: add notification for success or failure
+    }
+
+    const handleStarred = async (index, hash, starred) => {
+        setDatabase(prev => {
+            const copy = [...prev]
+            copy[index].starred = !starred
+            return copy
+        })
+
+        await axios.post(`${api}/toggle-starred`, {token, hash, starred})
+    }
+
+    const handleDelete = async (hash) => {
+        setDatabase(prev => prev.filter(item => item.hash !== hash))
+
+        await axios.post(`${api}/delete-message`, {token, hash})
+    }
 
     return (
         <div className="_7ohc">
@@ -146,12 +146,12 @@ const Inbox = ({ username, setUnread, setStarred, sidebar }) => {
                             </div>
                         </div>
                         <div className="message-container">
-                            {messages.map(item => {
+                            {messages.map((item, index) => {
                                 return (
-                                    <div key={item.id} className={item.read === "unread" ? "toked-brin" : "across-wash toked-brin"}>
+                                    <div key={item.hash} className={item.read === false ? "toked-brin" : "across-wash toked-brin"}>
                                         <div 
                                             className="voidness-bam"
-                                            onMouseEnter={() => setActiveMessage(item.id)}
+                                            onMouseEnter={() => setActiveMessage(item.hash)}
                                             onMouseLeave={() => setActiveMessage(false)}
                                         >
                                             {checkbox === true ? (
@@ -160,41 +160,35 @@ const Inbox = ({ username, setUnread, setStarred, sidebar }) => {
                                                 </div>
                                             ) : (
                                                 <div className="avatar">
-                                                    {item.from[0]}
+                                                    {item.from[0].toUpperCase()}
                                                 </div>
                                             )}
                                             <div className="appeared-hut">
-                                                <h3>{item.from}</h3>
-                                                <span>{item.message}</span>
+                                                <h3>{item.from[0].toUpperCase() + item.from.slice(1,)}</h3>
+                                                <span>{item.subject.slice(0, 35)}</span>
                                             </div>
                                             <div className="subnode-ten">
-                                                <span>{item.date}</span>
+                                                <span>
+                                                    {new Date(item.date).toLocaleDateString("en-US", options)}
+                                                </span>
                                                 <div>
                                                     {item.starred === true ? <img src={StarFilled} alt="" /> : undefined}
                                                 </div>
                                             </div>
-                                            {activeMessage === item.id ? (
+                                            {activeMessage === item.hash ? (
                                                 <div className="soothers-sac">
                                                     <div className="crisis-sons">
-                                                        {item.read === "unread" ? 
+                                                        {item.read === false ? 
                                                             <img 
-                                                                onClick={() => setDatabase(prev => {
-                                                                    const copy = [...prev]
-                                                                    copy[item.id - 1].read = "read"
-                                                                    return copy
-                                                                })}
+                                                                onClick={() => handleRead(index, item.hash, true)}
                                                                 className="psalmed-vast" 
                                                                 src={MessageIcon} 
                                                                 alt="" 
                                                             /> : <MdOutlineMarkunread 
-                                                                onClick={() => setDatabase(prev => {
-                                                                    const copy = [...prev]
-                                                                    copy[item.id - 1].read = "unread"
-                                                                    return copy
-                                                                })}
+                                                                onClick={() => handleRead(index, item.hash, false)}
                                                             />}
                                                     </div>
-                                                    <div className="crisis-sons">
+                                                    <div className="crisis-sons" onClick={() => handleDelete(item.hash)}>
                                                         <img className="psalmed-vast" src={DeleteIcon} alt="" />
                                                     </div>
                                                     <div className="crisis-sons">
@@ -203,11 +197,7 @@ const Inbox = ({ username, setUnread, setStarred, sidebar }) => {
                                                     <div className="crisis-sons">
                                                         <img 
                                                             className={item.starred === true ? "execs-fine" : undefined}
-                                                            onClick={() => setDatabase(prev => {
-                                                                    const copy = [...prev]
-                                                                    copy[item.id - 1].starred = !prev[item.id - 1].starred
-                                                                    return copy
-                                                            })}
+                                                            onClick={() => handleStarred(index, item.hash, item.starred)}
                                                             src={item.starred === true ? StarFilled : StarIcon} 
                                                             alt=""
                                                         />
@@ -224,7 +214,7 @@ const Inbox = ({ username, setUnread, setStarred, sidebar }) => {
                         <div>
                             <h1>Welcome {username[0].toUpperCase()}{username.slice(1,)}</h1>
                             <span>
-                                You have <strong>{database.filter(message => message.read === "unread").length} unread conversations</strong> in your inbox.
+                                You have <strong>{unread} unread conversations</strong> in your inbox.
                             </span>
                             <img src={ConversationsIcon} alt="" />
                         </div>

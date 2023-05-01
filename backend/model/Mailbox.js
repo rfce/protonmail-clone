@@ -36,4 +36,4 @@ const mailboxSchema = new Schema({
     }
 })
 
-module.exports = mailboxSchema
+module.exports = mongoose.model("Mailbox", mailboxSchema)

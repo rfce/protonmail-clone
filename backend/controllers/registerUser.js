@@ -1,7 +1,9 @@
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
+const { v4: uuid } = require('uuid')
 
 const User = require('../model/User')
+const Mailbox = require("../model/Mailbox")
 
 const registerUser = async (req, res) => {
     const { username, password } = req.body
@@ -88,6 +90,18 @@ const registerUser = async (req, res) => {
 
     // Save new user to database
     await User.create({ username, password: hashed })
+
+    // Default welcome e-mail for new users
+    await Mailbox.create({
+        username,
+        from: "proton",
+        to: username,
+        subject: "Welcome to the future of email",
+        body: "Welcome to the Proton community",
+        location: "Inbox",
+        starred: true,
+        hash: uuid()
+    })
 
     const token = jwt.sign(
         { username },

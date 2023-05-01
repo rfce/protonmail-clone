@@ -11,6 +11,8 @@ import TextEditor from "../assets/TextEditor.png"
 import { useState } from "react"
 import { BsChevronDown } from "react-icons/bs"
 import { RiArrowDownSFill } from "react-icons/ri"
+import axios from "axios"
+import api from "../config/backend"
 
 const NewMessage = ({ username, setPopup }) => {
     const [recipient, setRecipient] = useState("")
@@ -18,6 +20,19 @@ const NewMessage = ({ username, setPopup }) => {
     const [focused, setFocused] = useState(false)
     const [message, setMessage] = useState("\n\nSent with Proton Mail secure email.")
     const [minimized, setMinimized] = useState(false)
+
+    const handleSend = async () => {
+        const token = localStorage.getItem("token")
+
+        const response = await axios.post(`${api}/compose-box`, {
+            toaddress: recipient,
+            subject,
+            body: message,
+            token
+        })
+
+        console.log(response.data)
+    }
 
     return  (
         <div className="_9zvh">
@@ -79,7 +94,7 @@ const NewMessage = ({ username, setPopup }) => {
                 </div>
                 <div>
                     <img src={AttachmentIcon} alt="" />
-                    <div className="firebug-bum">
+                    <div className="firebug-bum" onClick={() => handleSend()}>
                         Send
                         <div>
                             <RiArrowDownSFill />

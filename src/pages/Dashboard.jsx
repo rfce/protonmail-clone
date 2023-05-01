@@ -17,6 +17,8 @@ import Inbox from "../components/Inbox"
 import EmptyFolder from "../components/EmptyFolder"
 import NewMessage from "./NewMessage"
 import { useNavigate } from "react-router-dom"
+import axios from "axios"
+import api from "../config/backend"
 
 const Dashboard = () => {
     const [popup, setPopup] = useState(false)
@@ -26,6 +28,7 @@ const Dashboard = () => {
     const [compose, setCompose] = useState(false)
     const [unread, setUnread] = useState(0)
     const [starred, setStarred] = useState(0)
+    const [database, setDatabase] = useState([])
 
     const navigate = useNavigate()
 
@@ -74,7 +77,24 @@ const Dashboard = () => {
     }
 
     useEffect(() => {
-        document.title = `${sidebar[activeSidebar]} | theresa@proton.me | Proton Mail`
+        const currentSidebar = activeSidebar < 4 ? sidebar[activeSidebar] : secondarySidebar[activeSidebar - 4]
+
+        document.title = `${currentSidebar} | theresa@proton.me | Proton Mail`
+
+        const token = localStorage.getItem("token")
+        
+        const init = async () => {
+            const response = await axios.post(`${api}/fetch-mailbox`, {
+                token,
+                location: currentSidebar
+            })
+
+            if (response.data.status === "success") {
+                setDatabase(response.data.messages)
+            }
+        }
+        
+        init()
     }, [activeSidebar])
 
     return (
@@ -209,12 +229,16 @@ const Dashboard = () => {
                         </div>
                     </div>
                 </div>
-                {(activeSidebar === 0 || (activeSidebar === 3 && starred > 0)) ? 
+                {/* 0: Inbox, 3: Starred, 6: Trash */}
+                {(activeSidebar === 0 || activeSidebar === 6 || (activeSidebar === 3 && starred > 0)) ? 
                         <Inbox 
                             username={username} 
+                            unread={unread}
                             setUnread={setUnread} 
                             setStarred={setStarred} 
-                            sidebar={activeSidebar} 
+                            sidebar={activeSidebar}
+                            database={database}
+                            setDatabase={setDatabase}
                         /> : <EmptyFolder />}
                 <div className="sidebar">
                     <img src={ContactsIcon} alt="" />

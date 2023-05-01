@@ -23,6 +23,10 @@ const Login = () => {
     
     useEffect(() => {
         document.title = "Proton Mail — Sign in"
+
+        const token = localStorage.getItem("token")
+
+        if (token) { navigate("/dashboard") }
     }, [])
 
     useEffect(() => {
@@ -57,7 +61,12 @@ const Login = () => {
         }
 
         if (data.status === "success") {
-            localStorage.setItem("username", username)
+            if (username.includes("@")) {
+                localStorage.setItem("username", username.split("@")[0])
+            }
+            else {
+                localStorage.setItem("username", username)
+            }
             localStorage.setItem("token", data.token)
             navigate("/dashboard")
         }   
