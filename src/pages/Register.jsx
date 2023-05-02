@@ -4,7 +4,7 @@ import GlobeIcon from "../assets/Globe.png"
 import Spinner from "../assets/Spinner.svg"
 import { RiArrowDownSFill } from "react-icons/ri"
 import { BsExclamationCircleFill } from "react-icons/bs"
-import { FaRegEye } from "react-icons/fa"
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa"
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import axios from "axios"
@@ -18,6 +18,7 @@ const Register = () => {
         username: undefined, password: undefined, confirmPassword: undefined 
     })
     const [loading, setLoading] = useState(false)
+    const [passwordHidden, setPasswordHidden] = useState({ password: true, confirm: true })
 
     const navigate = useNavigate()
 
@@ -137,9 +138,18 @@ const Register = () => {
                         </div>
                         <div className="spastics-foe">
                             <span>Password</span>
-                            <input className={errors.password ? "error" : undefined} value={password} onChange={e => setPassword(e.target.value)} />
+                            <input
+                                className={passwordHidden.password && errors.password ? "eastern-memo error" : (passwordHidden.password ? "eastern-memo" : undefined)} 
+                                type={passwordHidden.password ? "password" : "text"} 
+                                value={password} 
+                                onChange={e => setPassword(e.target.value)} 
+                            />
                             <div className="praised-yald">
-                                <FaRegEye />
+                                {passwordHidden.password ? <FaRegEye onClick={() => setPasswordHidden(prev => {
+                                    return {...prev, password: false}
+                                })} /> : <FaRegEyeSlash onClick={() => setPasswordHidden(prev => {
+                                    return {...prev, password: true}
+                                })}/>}
                             </div>
                             {errors.password ? (
                                 <div className="sanitise-oxen">
@@ -150,9 +160,18 @@ const Register = () => {
                         </div>
                         <div className="spastics-foe">
                             <span>Repeat password</span>
-                            <input className={errors.confirmPassword ? "error" : undefined} value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} />
+                            <input 
+                                className={passwordHidden.confirm && errors.confirmPassword ? "eastern-memo error" : (passwordHidden.confirm ? "eastern-memo" : undefined)}
+                                type={passwordHidden.confirm ? "password" : "text"} 
+                                value={confirmPassword} 
+                                onChange={e => setConfirmPassword(e.target.value)} 
+                            />
                             <div className="praised-yald">
-                                <FaRegEye />
+                                {passwordHidden.confirm ? <FaRegEye onClick={() => setPasswordHidden(prev => {
+                                    return {...prev, confirm: false}
+                                })} /> : <FaRegEyeSlash onClick={() => setPasswordHidden(prev => {
+                                    return {...prev, confirm: true}
+                                })}/>}
                             </div>
                             {errors.confirmPassword ? (
                                 <div className="sanitise-oxen">

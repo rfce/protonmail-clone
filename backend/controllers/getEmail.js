@@ -25,9 +25,14 @@ const getEmail = async (req, res) => {
 
     const username = data.username
 
-    const result = await Mailbox.find({
-        username, location
-    }).sort("-date").select("-_id -__v")
+    const match = { username, location }
+
+    if (location === "Starred") {
+        match.location = "Inbox"
+        match.starred = true
+    }
+
+    const result = await Mailbox.find(match).sort("-date").select("-_id -__v")
 
     res.json({
         status: "success",

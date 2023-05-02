@@ -96,6 +96,7 @@
     color: rgb(80, 80, 80);
     padding-left: 5px;
     transform: translateY(2px);
+    cursor: pointer;
 }
 
 ._5ayn .whipped-bug .tabstop-ebbs .gumdrops-ace {
@@ -112,6 +113,12 @@
     color: rgb(220, 50, 81);
     font-size: 11px;
     font-weight: 500;
+}
+
+._5ayn .whipped-bug .tabstop-ebbs .gumdrops-ace .mondays-gees {
+    color: rgb(62, 62, 62);
+    font-size: 26px;
+    caret-color: transparent;
 }
 
 ._5ayn .whipped-bug .tabstop-ebbs .gumdrops-ace input.error {
@@ -232,4 +239,73 @@
 
 ._5ayn .whipped-bug .prankish-sod .marrows-chew {
     text-decoration: underline;
+} 
+
+._0vzh {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+._0vzh .clags-roe {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+._0vzh .clags-roe div {
+    position: absolute;
+    top: 33px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: rgb(29, 49, 98);
+    animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+
+._0vzh .clags-roe div:nth-child(1) {
+    left: 8px;
+    animation: lds-ellipsis1 0.6s infinite;
+}
+
+._0vzh .clags-roe div:nth-child(2) {
+    left: 8px;
+    animation: lds-ellipsis2 0.6s infinite;
+}
+
+._0vzh .clags-roe div:nth-child(3) {
+    left: 32px;
+    animation: lds-ellipsis2 0.6s infinite;
+}
+
+._0vzh .clags-roe div:nth-child(4) {
+    left: 56px;
+    animation: lds-ellipsis3 0.6s infinite;
+}
+
+@keyframes lds-ellipsis1 {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+@keyframes lds-ellipsis3 {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(0);
+    }
+}
+@keyframes lds-ellipsis2 {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(24px, 0);
+    }
 }

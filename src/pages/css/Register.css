@@ -96,6 +96,7 @@
     color: rgb(80, 80, 80);
     padding-left: 5px;
     transform: translateY(2px);
+    cursor: pointer;
 }
 
 ._7mua .whipped-bug .tabstop-ebbs .spastics-foe {
@@ -117,6 +118,12 @@
 ._7mua .whipped-bug .tabstop-ebbs .spastics-foe .sanitise-oxen svg {
     width: 13px;
     height: 13px;
+}
+
+._7mua .whipped-bug .tabstop-ebbs .spastics-foe .eastern-memo {
+    color: rgb(62, 62, 62);
+    font-size: 26px;
+    caret-color: transparent;
 }
 
 ._7mua .whipped-bug .tabstop-ebbs .spastics-foe input.error {

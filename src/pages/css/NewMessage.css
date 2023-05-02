@@ -56,6 +56,27 @@
     overflow: hidden;
 }
 
+._9zvh .container .chiggers-cede {
+    position: absolute;
+    bottom: 65px;
+    width: 100%;
+    color: rgb(187, 122, 122);
+    background-color: antiquewhite;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    box-sizing: border-box;
+}
+
+._9zvh .container .chiggers-cede svg {
+    fill: rgb(187, 122, 122);
+    width: 18px;
+    height: 18px;
+}
+
 ._9zvh .container .flamed-ibex {
     display: flex;
     align-items: center;
@@ -182,6 +203,12 @@
     margin-left: 15px;
     box-sizing: border-box;
     overflow: hidden;
+}
+
+._9zvh .footer .firebug-bum > img {
+    width: 16px;
+    height: 16px;
+    padding-left: 18px;
 }
 
 ._9zvh .footer .firebug-bum svg {

@@ -8,7 +8,8 @@ import LockIcon from "../assets/LockIcon.png"
 import EllipsisIcon from "../assets/EllipsisIcon.png"
 import AttachmentIcon from "../assets/AttachmentIcon.png"
 import TextEditor from "../assets/TextEditor.png"
-import { useState } from "react"
+import Spinner from "../assets/Spinner.svg"
+import { useEffect, useState } from "react"
 import { BsChevronDown } from "react-icons/bs"
 import { RiArrowDownSFill } from "react-icons/ri"
 import axios from "axios"
@@ -20,8 +21,11 @@ const NewMessage = ({ username, setPopup }) => {
     const [focused, setFocused] = useState(false)
     const [message, setMessage] = useState("\n\nSent with Proton Mail secure email.")
     const [minimized, setMinimized] = useState(false)
+    const [loading, setLoading] = useState(false)
+    const [notification, setNotification] = useState(undefined)
 
     const handleSend = async () => {
+        setLoading(true)
         const token = localStorage.getItem("token")
 
         const response = await axios.post(`${api}/compose-box`, {
@@ -31,8 +35,17 @@ const NewMessage = ({ username, setPopup }) => {
             token
         })
 
-        console.log(response.data)
+        setNotification(response.data.reason)
+        setLoading(false)
     }
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setNotification(undefined)
+        }, 5000)
+
+        return () => clearTimeout(timer)
+    }, [notification])
 
     return  (
         <div className="_9zvh">
@@ -85,6 +98,11 @@ const NewMessage = ({ username, setPopup }) => {
                 <div className="bides-aril">
                     <textarea value={message} onChange={e => setMessage(e.target.value)} />
                 </div>
+                {notification ? (
+                    <div className="chiggers-cede">
+                        {notification}
+                    </div>
+                ) : undefined}
             </div>
             <div className={minimized === true ? "footer minimized" : "footer"}>
                 <div>
@@ -95,7 +113,7 @@ const NewMessage = ({ username, setPopup }) => {
                 <div>
                     <img src={AttachmentIcon} alt="" />
                     <div className="firebug-bum" onClick={() => handleSend()}>
-                        Send
+                        {loading ? <img src={Spinner} alt="" /> : "Send"}
                         <div>
                             <RiArrowDownSFill />
                         </div>

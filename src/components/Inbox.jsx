@@ -37,35 +37,29 @@ const Inbox = ({ username, unread, setUnread, setStarred, sidebar, database, set
     useEffect(() => {
         setToken(localStorage.getItem("token"))
 
-        // Set unread messages count
-        const unread = database.filter(message => message.read === false)
+        // Inbox
+        if (sidebar === 0 && database.length) {
+            // Ignores previous fetched databse of other location
+            if (database[0].location === "Inbox") {
+                // Set unread messages count
+                const notread = database.filter(message => message.read === false)
 
-        setUnread(unread.length)
+                setUnread(notread.length)
 
-        // Set starred message count
-        const starred = database.filter(message => message.starred === true)
+                // Set starred count
+                const starred = database.filter(message => message.starred === true)
+                
+                setStarred(starred.length)
+            }
+        }
 
-        setStarred(starred.length)
-
-        // Filter read, unread messages
+        // Filter read or unread messages
         if (activeRead === 0) {
             setMessages(database)
         } else {
             setMessages(database.filter(message => {
                 return activeRead === 1 ? message.read === true : message.read === false
             }))
-        }
-
-        // Show starred messages
-        if (sidebar === 3) {
-            // Filter read, unread messages
-            if (activeRead === 0) {
-                setMessages(starred)
-            } else {
-                setMessages(database.filter(message => {
-                    return message.starred === true && message.read === messageSelector[activeRead].toLowerCase()
-                }))
-            }
         }
     }, [activeRead, database, sidebar])
 

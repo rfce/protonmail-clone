@@ -230,11 +230,12 @@ const Dashboard = () => {
                     </div>
                 </div>
                 {/* 0: Inbox, 3: Starred, 6: Trash */}
-                {(activeSidebar === 0 || activeSidebar === 6 || (activeSidebar === 3 && starred > 0)) ? 
+                {database.length ? 
                         <Inbox 
                             username={username} 
                             unread={unread}
                             setUnread={setUnread} 
+                            starred={starred}
                             setStarred={setStarred} 
                             sidebar={activeSidebar}
                             database={database}
