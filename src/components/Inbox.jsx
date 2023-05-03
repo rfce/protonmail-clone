@@ -31,6 +31,7 @@ const Inbox = ({ username, unread, setUnread, setStarred, sidebar, database, set
     const [activeMessage, setActiveMessage] = useState(false)
     const [token, setToken] = useState(undefined)
     const [notification, setNotification] = useState(undefined)
+    const [undoAction, setUndoAction] = useState(undefined)
 
     const messageSelector = ["All", "Read", "Unread"]
     const sidebarNames = ["Inbox", "Drafts", "Sent", "Starred", "Archive", "Spam", "Trash", "All mail"]
@@ -102,12 +103,44 @@ const Inbox = ({ username, unread, setUnread, setStarred, sidebar, database, set
         await axios.post(`${api}/toggle-starred`, {token, hash, starred})
     }
 
-    const handleDelete = async (hash) => {
+    const handleDelete = async (hash, from) => {
         setDatabase(prev => prev.filter(item => item.hash !== hash))
 
         await axios.post(`${api}/delete-message`, {token, hash})
 
+        setUndoAction({ from, hash })
         setNotification("Conversation moved to Trash.")
+    }
+
+    const handleArchive = async (hash, from) => {
+        setDatabase(prev => prev.filter(item => item.hash !== hash))
+
+        await axios.post(`${api}/archive-message`, {token, hash})
+
+        setUndoAction({ from, hash })
+        setNotification("Conversation moved to Archive.")
+    }
+
+    const handleUndo = async () => {
+        // Undo
+        await axios.post(`${api}/undo-action`, {
+            token, 
+            from: undoAction.from, 
+            hash: undoAction.hash
+        })
+
+        // Remove notification
+        setNotification(undefined)
+
+        // Fetch data to reset messages rendered
+        const response = await axios.post(`${api}/fetch-mailbox`, {
+            token,
+            location: sidebarNames[sidebar]
+        })
+
+        if (response.data.status === "success") {
+            setDatabase(response.data.messages)
+        }
     }
 
     return (
@@ -116,7 +149,7 @@ const Inbox = ({ username, unread, setUnread, setStarred, sidebar, database, set
                 <div className="tester-bet">
                     <div className="notification">
                         <span>{notification}</span>
-                        <span>Undo</span>
+                        <span onClick={() => handleUndo()}>Undo</span>
                         <IoMdClose />
                     </div>
                 </div>
@@ -208,10 +241,10 @@ const Inbox = ({ username, unread, setUnread, setStarred, sidebar, database, set
                                                                 onClick={() => handleRead(index, item.hash, false)}
                                                             />}
                                                     </div>
-                                                    <div className="crisis-sons" onClick={() => handleDelete(item.hash)}>
+                                                    <div className="crisis-sons" onClick={() => handleDelete(item.hash, item.location)}>
                                                         <img className="psalmed-vast" src={DeleteIcon} alt="" />
                                                     </div>
-                                                    <div className="crisis-sons">
+                                                    <div className="crisis-sons" onClick={() => handleArchive(item.hash, item.location)}>
                                                         <img src={BucketIcon} alt="" />
                                                     </div>
                                                     <div className="crisis-sons">
