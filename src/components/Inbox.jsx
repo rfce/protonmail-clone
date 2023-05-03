@@ -1,10 +1,11 @@
 import "./css/Inbox.css"
 import { useState, useEffect } from "react"
-import { IoMdArrowDropdown } from "react-icons/io"
+import { IoMdArrowDropdown, IoMdClose } from "react-icons/io"
 import { BsCheck2 } from "react-icons/bs"
 import { MdOutlineMarkunread } from "react-icons/md"
 import MessageIcon from "../assets/Header/Inbox.png"
 import ConversationsIcon from "../assets/ConversationsIcon.png"
+import ConversationImage from "../assets/ConversationImage.png"
 import StarIcon from "../assets/StarIcon.png"
 import StarFilled from "../assets/StarFilled.png"
 import FireIcon from "../assets/Header/Spam.png"
@@ -29,8 +30,10 @@ const Inbox = ({ username, unread, setUnread, setStarred, sidebar, database, set
     const [activeCheckbox, setActiveCheckbox] = useState(false)
     const [activeMessage, setActiveMessage] = useState(false)
     const [token, setToken] = useState(undefined)
+    const [notification, setNotification] = useState(undefined)
 
     const messageSelector = ["All", "Read", "Unread"]
+    const sidebarNames = ["Inbox", "Drafts", "Sent", "Starred", "Archive", "Spam", "Trash", "All mail"]
     const headerButtons = [MessageIcon, DeleteIcon, BucketIcon, FireIcon, FolderIcon, LabelIcon]
     const headerButtonsHovered = [MailboxHover, TrashHover, BucketHover, SpamHover, FolderHover, LabelHover]
     
@@ -63,6 +66,18 @@ const Inbox = ({ username, unread, setUnread, setStarred, sidebar, database, set
         }
     }, [activeRead, database, sidebar])
 
+    useEffect(() => {
+        let timeout
+
+        if (notification) {
+            timeout = setTimeout(() => {
+                setNotification(undefined)
+            }, 5000)
+        }
+
+        return () => clearTimeout(timeout)
+    }, [notification])
+
     const options = { year: 'numeric', month: 'long', day: 'numeric' }
 
     const handleRead = async (index, hash, read) => {
@@ -91,10 +106,21 @@ const Inbox = ({ username, unread, setUnread, setStarred, sidebar, database, set
         setDatabase(prev => prev.filter(item => item.hash !== hash))
 
         await axios.post(`${api}/delete-message`, {token, hash})
+
+        setNotification("Conversation moved to Trash.")
     }
 
     return (
         <div className="_7ohc">
+            {notification ? (
+                <div className="tester-bet">
+                    <div className="notification">
+                        <span>{notification}</span>
+                        <span>Undo</span>
+                        <IoMdClose />
+                    </div>
+                </div>
+            ) : undefined}
             <div className="sacrum-pass">
                 <div className="header">
                     <div className={checkbox ? "checkbox active" : "checkbox"}
@@ -158,7 +184,7 @@ const Inbox = ({ username, unread, setUnread, setStarred, sidebar, database, set
                                                 </div>
                                             )}
                                             <div className="appeared-hut">
-                                                <h3>{item.from[0].toUpperCase() + item.from.slice(1,)}</h3>
+                                                <h3>{item.location === "Sent" ? `${item.to}@proton.me` : item.from[0].toUpperCase() + item.from.slice(1,)}</h3>
                                                 <span>{item.subject.slice(0, 35)}</span>
                                             </div>
                                             <div className="subnode-ten">
@@ -206,11 +232,24 @@ const Inbox = ({ username, unread, setUnread, setStarred, sidebar, database, set
                     </div>
                     <div className="canned-copy">
                         <div>
-                            <h1>Welcome {username[0].toUpperCase()}{username.slice(1,)}</h1>
-                            <span>
-                                You have <strong>{unread} unread conversations</strong> in your inbox.
-                            </span>
-                            <img src={ConversationsIcon} alt="" />
+                            {sidebar === 0 ? (
+                                <>  
+                                    <h1>Welcome {username[0].toUpperCase()}{username.slice(1,)}</h1>
+                                    <span>
+                                        You have <strong>{unread} unread conversations</strong> in your inbox.
+                                    </span>
+                                    <img src={ConversationsIcon} alt="" />
+                                </>
+                            ) : (
+                                <>
+                                    <h1 className="tinning-him">{sidebarNames[sidebar]}</h1>
+                                    <span className="recast-sard">
+                                        You have <strong>{messages.length} messages</strong> stored in this folder
+                                    </span>
+                                    <img className="devoices-evil" src={ConversationImage} alt="" />
+                                </>
+                            )}
+                            
                         </div>
                     </div>
                 </div>
