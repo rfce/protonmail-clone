@@ -1,6 +1,8 @@
 import "./css/Inbox.css"
 import { useState, useEffect } from "react"
 import { IoMdArrowDropdown, IoMdClose } from "react-icons/io"
+import { BiChevronDown } from "react-icons/bi"
+import { RiLockFill } from "react-icons/ri"
 import { BsCheck2 } from "react-icons/bs"
 import { MdOutlineMarkunread } from "react-icons/md"
 import MessageIcon from "../assets/Header/Inbox.png"
@@ -20,6 +22,14 @@ import TrashHover from "../assets/Hover/Delete.png"
 import BucketHover from "../assets/Hover/Bucket.png"
 import LabelHover from "../assets/Hover/Label.png"
 import FolderHover from "../assets/Hover/Folder.png"
+import BucketBlue from "../assets/Blue/Archive.png"
+import TrashBlue from "../assets/Blue/Trash.png"
+import StarBlue from "../assets/Blue/Star.png"
+import StarFilledBlue from "../assets/Blue/StarFilled.png"
+import InvertedMailbox from "../assets/Blue/MailboxInverted.png"
+import ReplyIcon from "../assets/ReplyIcon.png"
+import ReplyAllIcon from "../assets/ReplyAllIcon.png"
+import ForwardIcon from "../assets/ForwardIcon.png"
 import axios from "axios"
 import api from "../config/backend"
 
@@ -32,11 +42,17 @@ const Inbox = ({ username, unread, setUnread, setStarred, sidebar, database, set
     const [token, setToken] = useState(undefined)
     const [notification, setNotification] = useState(undefined)
     const [undoAction, setUndoAction] = useState(undefined)
+    const [openedEmail, setOpenedEmail] = useState(undefined)
 
     const messageSelector = ["All", "Read", "Unread"]
     const sidebarNames = ["Inbox", "Drafts", "Sent", "Starred", "Archive", "Spam", "Trash", "All mail"]
     const headerButtons = [MessageIcon, DeleteIcon, BucketIcon, FireIcon, FolderIcon, LabelIcon]
     const headerButtonsHovered = [MailboxHover, TrashHover, BucketHover, SpamHover, FolderHover, LabelHover]
+
+    const selectedEmail = messages.find(item => item.hash === openedEmail)
+    const selectedEmailTime = selectedEmail ? selectedEmail.date.split("T")[1].slice(0,5) : undefined
+    const [timeHour, timeMinutes] = selectedEmailTime ? selectedEmailTime.split(":") : [undefined, undefined]
+    const emailTimeFormatted  = Number(timeHour) > 12 ? Number(timeHour) - 12 + ":" + timeMinutes + " PM": selectedEmailTime + " AM"
     
     useEffect(() => {
         setToken(localStorage.getItem("token"))
@@ -78,6 +94,33 @@ const Inbox = ({ username, unread, setUnread, setStarred, sidebar, database, set
 
         return () => clearTimeout(timeout)
     }, [notification])
+
+    // Mark as read
+    useEffect(() => {
+        if (openedEmail) {
+            let isAlreadyRead = false
+
+            setDatabase(prev => {
+                const copy = [...prev]
+                const match = copy.find(item => item.hash === openedEmail)
+                isAlreadyRead = match.read === true ? true : false
+                match.read = true
+                return copy
+            })
+
+            const init = async () => {
+                const response = await axios.post(`${api}/toggle-read`, {
+                    token, 
+                    hash: openedEmail, 
+                    read: true
+                })
+            }
+
+            if (isAlreadyRead === false) {
+                init()
+            }
+        }
+    }, [openedEmail])
 
     const options = { year: 'numeric', month: 'long', day: 'numeric' }
 
@@ -203,7 +246,8 @@ const Inbox = ({ username, unread, setUnread, setStarred, sidebar, database, set
                                 return (
                                     <div key={item.hash} className={item.read === false ? "toked-brin" : "across-wash toked-brin"}>
                                         <div 
-                                            className="voidness-bam"
+                                            className={openedEmail === item.hash ? "voidness-bam active" : "voidness-bam"}
+                                            onClick={() => setOpenedEmail(item.hash)}
                                             onMouseEnter={() => setActiveMessage(item.hash)}
                                             onMouseLeave={() => setActiveMessage(false)}
                                         >
@@ -229,29 +273,29 @@ const Inbox = ({ username, unread, setUnread, setStarred, sidebar, database, set
                                                 </div>
                                             </div>
                                             {activeMessage === item.hash ? (
-                                                <div className="soothers-sac">
+                                                <div className="soothers-sac" onClick={e => e.stopPropagation()}>
                                                     <div className="crisis-sons">
                                                         {item.read === false ? 
                                                             <img 
                                                                 onClick={() => handleRead(index, item.hash, true)}
                                                                 className="psalmed-vast" 
-                                                                src={MessageIcon} 
+                                                                src={openedEmail === item.hash ? InvertedMailbox : MessageIcon} 
                                                                 alt="" 
                                                             /> : <MdOutlineMarkunread 
                                                                 onClick={() => handleRead(index, item.hash, false)}
                                                             />}
                                                     </div>
                                                     <div className="crisis-sons" onClick={() => handleDelete(item.hash, item.location)}>
-                                                        <img className="psalmed-vast" src={DeleteIcon} alt="" />
+                                                        <img className="psalmed-vast" src={openedEmail === item.hash ? TrashBlue : DeleteIcon} alt="" />
                                                     </div>
                                                     <div className="crisis-sons" onClick={() => handleArchive(item.hash, item.location)}>
-                                                        <img src={BucketIcon} alt="" />
+                                                        <img src={openedEmail === item.hash ? BucketBlue : BucketIcon} alt="" />
                                                     </div>
                                                     <div className="crisis-sons">
                                                         <img 
                                                             className={item.starred === true ? "execs-fine" : undefined}
                                                             onClick={() => handleStarred(index, item.hash, item.starred)}
-                                                            src={item.starred === true ? StarFilled : StarIcon} 
+                                                            src={item.starred === true ? (openedEmail === item.hash ? StarFilledBlue : StarFilled) : (openedEmail === item.hash ? StarBlue : StarIcon)} 
                                                             alt=""
                                                         />
                                                     </div>
@@ -263,28 +307,65 @@ const Inbox = ({ username, unread, setUnread, setStarred, sidebar, database, set
                             })}
                         </div>
                     </div>
-                    <div className="canned-copy">
-                        <div>
-                            {sidebar === 0 ? (
-                                <>  
-                                    <h1>Welcome {username[0].toUpperCase()}{username.slice(1,)}</h1>
-                                    <span>
-                                        You have <strong>{unread} unread conversations</strong> in your inbox.
-                                    </span>
-                                    <img src={ConversationsIcon} alt="" />
-                                </>
-                            ) : (
-                                <>
-                                    <h1 className="tinning-him">{sidebarNames[sidebar]}</h1>
-                                    <span className="recast-sard">
-                                        You have <strong>{messages.length} messages</strong> stored in this folder
-                                    </span>
-                                    <img className="devoices-evil" src={ConversationImage} alt="" />
-                                </>
-                            )}
-                            
+                    {openedEmail ? (
+                        <div className="tweedier-ids">
+                            <div className="container">
+                                <h4>{selectedEmail.subject}</h4>
+                                <div className="box">
+                                    <div className="chlorins-oats">
+                                        <strong>From</strong>
+                                        <div className="ketone-dial">
+                                            <RiLockFill />
+                                            <span>{selectedEmail.from}</span>
+                                            <span>{`<${selectedEmail.from}@proton.me>`}</span>
+                                        </div>
+                                        <span className="keynote-dzos">{emailTimeFormatted}</span>
+                                    </div>
+                                    <div className="malty-cabs">
+                                        <strong>To</strong>
+                                        <span>{selectedEmail.to}@proton.me</span>
+                                        <BiChevronDown className="vermis-etch" />
+                                    </div>
+                                    <div className="phenom-ore">
+                                        <div>
+                                            <img src={ReplyIcon} alt="" />
+                                        </div>
+                                        <div>
+                                            <img src={ReplyAllIcon} alt="" />
+                                        </div>
+                                        <div>
+                                            <img src={ForwardIcon} alt="" />
+                                        </div>
+                                    </div>
+                                    <div className="kneecap-data">
+                                        {selectedEmail.body}
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    ) : (
+                        <div className="canned-copy">
+                            <div>
+                                {sidebar === 0 ? (
+                                    <>  
+                                        <h1>Welcome {username[0].toUpperCase()}{username.slice(1,)}</h1>
+                                        <span>
+                                            You have <strong>{unread} unread conversations</strong> in your inbox.
+                                        </span>
+                                        <img src={ConversationsIcon} alt="" />
+                                    </>
+                                ) : (
+                                    <>
+                                        <h1 className="tinning-him">{sidebarNames[sidebar]}</h1>
+                                        <span className="recast-sard">
+                                            You have <strong>{messages.length} messages</strong> stored in this folder
+                                        </span>
+                                        <img className="devoices-evil" src={ConversationImage} alt="" />
+                                    </>
+                                )}
+                            </div>
+                        </div>
+                    )}
                 </div>
             </div>
         </div>

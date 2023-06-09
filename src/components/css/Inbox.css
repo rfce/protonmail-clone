@@ -234,6 +234,29 @@
     padding: 10px 12px;
     border-radius: 8px;
     user-select: none;
+    overflow: hidden;
+}
+
+._7ohc .message-container .voidness-bam.active {
+    background-color: rgb(98, 67, 230);
+}
+
+._7ohc .message-container .voidness-bam.active h3,
+._7ohc .message-container .voidness-bam.active span {
+    color: white;
+}
+
+._7ohc .message-container .voidness-bam.active .avatar {
+    color: white;
+    background-color: rgba(13, 15, 99, 0.35);
+}
+
+._7ohc .message-container .voidness-bam.active .soothers-sac {
+    background-color: rgb(98, 67, 230);
+}
+
+._7ohc .message-container .voidness-bam.active .soothers-sac svg {
+    fill: white;
 }
 
 ._7ohc .message-container .voidness-bam h3 {
@@ -336,4 +359,104 @@
 
 ._7ohc .message-container .subnode-ten img {
     transform: translateY(2px);
+}
+
+._7ohc .tweedier-ids {
+    padding: 20px;
+}
+
+._7ohc .tweedier-ids .container {
+    display: flex;
+    flex-direction: column;
+}
+
+._7ohc .tweedier-ids .container h4 {
+    all: unset;
+    margin-top: 8px;
+    margin-bottom: 20px;
+    font-weight: 600;
+    color: rgb(12, 12, 20);
+    font-size: 20px;
+}
+
+._7ohc .tweedier-ids .container .box {
+    border: 1px solid rgb(220, 220, 220);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+._7ohc .tweedier-ids .container .box .chlorins-oats {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+._7ohc .tweedier-ids .container .box .chlorins-oats .ketone-dial {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+._7ohc .tweedier-ids .container .box .chlorins-oats .ketone-dial span:last-of-type {
+    color: rgb(118, 86, 254);
+}
+
+._7ohc .tweedier-ids .container .box .chlorins-oats .keynote-dzos {
+    margin-left: auto;
+    font-size: 12px;
+    color: rgb(12, 12, 20);
+}
+
+._7ohc .tweedier-ids .container .box strong {
+    font-size: 14px;
+    font-weight: 500;
+    width: 50px;
+}
+
+._7ohc .tweedier-ids .container .box svg {
+    color: rgb(35, 158, 206);
+    width: 17px;
+    height: 17px;
+}
+
+._7ohc .tweedier-ids .container .box .malty-cabs {
+    display: flex;
+}
+
+._7ohc .tweedier-ids .container .box .malty-cabs strong {
+    width: 50px;
+}
+
+._7ohc .tweedier-ids .container .box .malty-cabs span {
+    font-size: 14px;
+}
+
+._7ohc .tweedier-ids .container .box .malty-cabs .vermis-etch {
+    margin-left: auto;
+    color: rgb(51, 51, 51);
+    width: 20px;
+    height: 20px;
+}
+
+._7ohc .tweedier-ids .container .box .phenom-ore {
+    display: flex;
+    align-items: center;
+    padding: 2px 4px;
+    border: 1px solid rgb(182, 182, 182);
+    width: fit-content;
+    border-radius: 10px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    margin-left: auto;
+}
+
+._7ohc .tweedier-ids .container .box .phenom-ore img {
+    transform: translateY(2px);
+    cursor: pointer;
+}
+
+._7ohc .tweedier-ids .container .box .kneecap-data {
+    white-space: pre-wrap;
 }
